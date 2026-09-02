@@ -1,0 +1,293 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import RotatingTitle from '../components/RotatingTitle.astro';
+import home from '../../content/home.json';
+
+const rotatingTitles = [
+  'Lead Data Scientist',
+  'Machine Learning Engineer',
+  'Research & Geospatial AI Lead',
+  'Adjunct Professor',
+  'Oceanographer',
+];
+---
+
+<SiteLayout title={home.pageTitle} description={home.metaDescription}>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">
+        <a href={home.eyebrowUrl} target="_blank" rel="noreferrer">{home.eyebrow}</a>
+      </p>
+      <h1 class="hero-name">{home.name}</h1>
+      <RotatingTitle titles={rotatingTitles} />
+      <p class="intro">
+        {home.intro}
+      </p>
+      <div class="details">
+        <div class="detail detail-current detail-role">
+          <span class="detail-label">Current role</span>
+          {home.details.role.title} - <a href={home.details.role.url} target="_blank" rel="noreferrer">{home.details.role.organization}</a>, <a href={home.details.role.suffixUrl} target="_blank" rel="noreferrer">{home.details.role.suffix}</a>
+          <address class="role-contact">
+            {home.details.role.address?.map((line) => <span>{line}</span>)}
+            <a href={`mailto:${home.details.role.email}`}>{home.details.role.email}</a>
+          </address>
+        </div>
+        <div class="detail detail-current detail-academic">
+          <span class="detail-label">Academic role</span>
+          {home.details.also.title} - <a href={home.details.also.url} target="_blank" rel="noreferrer">{home.details.also.organization}</a>, <a href={home.details.also.suffixUrl} target="_blank" rel="noreferrer">{home.details.also.suffix}</a>
+          <address class="role-contact">
+            {home.details.also.address?.map((line) => <span>{line}</span>)}
+            <a href={`mailto:${home.details.also.email}`}>{home.details.also.email}</a>
+          </address>
+        </div>
+        <div class="detail detail-interests">
+          <span class="detail-label">Research interests</span>
+          <div class="interest-tags">
+            {home.researchInterests.map((interest) => <span>{interest}</span>)}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="portrait-stack">
+      <figure class="portrait">
+        <img src={home.photo.publicPath} alt={home.photo.alt} />
+      </figure>
+      <aside class="social-window" aria-labelledby="social-window-title">
+        <div class="social-copy">
+          <p class="eyebrow">{home.socialWindow.eyebrow}</p>
+          <h2 id="social-window-title">{home.socialWindow.title}</h2>
+          <p>{home.socialWindow.description}</p>
+          <a class="linkedin-cta" href={home.linkedin.url} target="_blank" rel="noreferrer">{home.socialWindow.activityLabel}</a>
+        </div>
+      </aside>
+      <aside class="youtube-window" aria-labelledby="youtube-window-title">
+        <div class="youtube-copy">
+          <div class="youtube-heading-row">
+            <img src={home.youtube.image} alt="" loading="lazy" />
+            <p class="eyebrow">{home.youtube.eyebrow}</p>
+          </div>
+          <h2 id="youtube-window-title">{home.youtube.title}</h2>
+          <p>{home.youtube.description}</p>
+          <a class="youtube-cta" href={home.youtube.url} target="_blank" rel="noreferrer">{home.youtube.label}</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="featured-work">
+    <h2 id="featured-work">Featured Work</h2>
+    <div class="grid">
+      {
+        home.featuredWork.map((item) => (
+          <article class="card">
+            <h3><a href={item.url}>{item.title}</a></h3>
+            <p>{item.summary}</p>
+            {'supportingLinks' in item && item.supportingLinks && (
+              <div class="support-links">
+                {item.supportingLinks.map((link) => (
+                  <a href={link.url} target="_blank" rel="noreferrer">{link.label}</a>
+                ))}
+              </div>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="where-i-help">
+    <h2 id="where-i-help">Where I Help Most</h2>
+    <div class="help-grid">
+      {
+        home.whereIHelp.map((item) => (
+          <article class="help-card">
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="technical-toolkit">
+    <h2 id="technical-toolkit">Technical Toolkit</h2>
+    <p class="section-intro">Technologies I use to move from geospatial data and AI research to deployable applications and operational workflows.</p>
+    <div class="tech-grid">
+      {
+        home.technicalToolkit.map((group) => (
+          <article class="tech-card">
+            <h3>{group.category}</h3>
+            <div class="tech-tags">
+              {group.tools.map((tool) => <span>{tool}</span>)}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="recent-writing">
+    <h2 id="recent-writing">Recent Writing</h2>
+    {
+      home.recentWriting.map((item) => (
+        <p class="date">
+          {item.date} · <a href={item.url}>{item.label}</a>
+        </p>
+      ))
+    }
+  </section>
+
+  <section class="contact-cta" aria-labelledby="contact-cta-title">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-cta-title">{home.contactCta.title}</h2>
+      <p>{home.contactCta.description}</p>
+      <a class="contact-linkedin" href={home.contactCta.primaryUrl} target="_blank" rel="noreferrer">{home.contactCta.primaryLabel}</a>
+    </div>
+    <form class="contact-form" id="contact-form" data-recipient={home.contactCta.email}>
+      <label>
+        <span>Name</span>
+        <input name="name" type="text" autocomplete="name" placeholder="Your name" />
+      </label>
+      <label>
+        <span>Email</span>
+        <input name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+      </label>
+      <label>
+        <span>Company / team</span>
+        <input name="company" type="text" autocomplete="organization" placeholder="Organization, lab, or team" />
+      </label>
+      <label>
+        <span>Project type</span>
+        <select name="topic">
+          <option>GeoAI collaboration</option>
+          <option>Research or speaking</option>
+          <option>Teaching or workshop</option>
+          <option>ArcGIS AI workflow</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label class="message-field">
+        <span>Project details</span>
+        <textarea name="message" rows="5" placeholder="Tell me what you are working on, what kind of help you need, or where you would like to collaborate."></textarea>
+      </label>
+      <div class="message-actions">
+        <button type="button" id="prepare-fallback" aria-expanded="false" aria-controls="browser-fallback">Prepare browser fallback</button>
+        <a class="email-app-link" href={home.contactCta.secondaryUrl}>Open email app</a>
+      </div>
+      <div class="browser-fallback" id="browser-fallback" hidden>
+        <div class="fallback-heading">
+          <span>Prepare browser fallback</span>
+          <p>No local mail app? Copy the browser-safe message, then open Gmail or Outlook.</p>
+        </div>
+        <textarea id="message-preview" rows="6" readonly placeholder="Your generated message will appear here."></textarea>
+        <div class="contact-actions">
+          <button type="button" id="copy-message">Copy message</button>
+          <a class="contact-secondary" id="gmail-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=mohamed.geo.ahmed@gmail.com" target="_blank" rel="noreferrer">Open Gmail</a>
+          <a class="contact-secondary" id="outlook-link" href="https://outlook.live.com/mail/0/deeplink/compose?to=mohamed.geo.ahmed@gmail.com" target="_blank" rel="noreferrer">Open Outlook</a>
+        </div>
+        <p class="form-note" id="copy-status" aria-live="polite">This prepares text locally in your browser.</p>
+      </div>
+    </form>
+  </section>
+
+  <script is:inline>
+    const contactForm = document.getElementById('contact-form');
+    const messagePreview = document.getElementById('message-preview');
+    const prepareFallback = document.getElementById('prepare-fallback');
+    const browserFallback = document.getElementById('browser-fallback');
+    const copyMessage = document.getElementById('copy-message');
+    const copyStatus = document.getElementById('copy-status');
+    const gmailLink = document.getElementById('gmail-link');
+    const outlookLink = document.getElementById('outlook-link');
+
+    const buildMessage = () => {
+      if (!contactForm) return { recipient: '', subject: '', body: '' };
+
+      const formData = new FormData(contactForm);
+      const recipient = contactForm.dataset.recipient;
+      const name = String(formData.get('name') || '').trim();
+      const email = String(formData.get('email') || '').trim();
+      const company = String(formData.get('company') || '').trim();
+      const topic = String(formData.get('topic') || 'Website inquiry').trim();
+      const message = String(formData.get('message') || '').trim();
+      const subject = `Website inquiry: ${topic}`;
+      const body = [
+        name && `Name: ${name}`,
+        email && `Email: ${email}`,
+        company && `Company / team: ${company}`,
+        `Project type: ${topic}`,
+        '',
+        message || 'Hello Mohamed,',
+      ].filter(Boolean).join('\n');
+
+      return { recipient, subject, body };
+    };
+
+    const updateMessagePreview = () => {
+      const { subject, body } = buildMessage();
+
+      if (messagePreview instanceof HTMLTextAreaElement) {
+        messagePreview.value = `Subject: ${subject}\n\n${body}`;
+      }
+    };
+
+    const updateBrowserEmailLinks = () => {
+      const { recipient, subject, body } = buildMessage();
+      const encodedSubject = encodeURIComponent(subject);
+      const encodedBody = encodeURIComponent(body);
+
+      if (gmailLink instanceof HTMLAnchorElement) {
+        gmailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodedSubject}&body=${encodedBody}`;
+      }
+
+      if (outlookLink instanceof HTMLAnchorElement) {
+        outlookLink.href = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(recipient)}&subject=${encodedSubject}&body=${encodedBody}`;
+      }
+    };
+
+    const updateContactOutput = () => {
+      updateMessagePreview();
+      updateBrowserEmailLinks();
+    };
+
+    contactForm?.addEventListener('input', updateBrowserEmailLinks);
+    contactForm?.addEventListener('change', updateBrowserEmailLinks);
+    contactForm?.addEventListener('submit', (event) => event.preventDefault());
+
+    updateBrowserEmailLinks();
+
+    prepareFallback?.addEventListener('click', () => {
+      if (browserFallback instanceof HTMLElement) {
+        browserFallback.hidden = false;
+      }
+
+      if (prepareFallback instanceof HTMLButtonElement) {
+        prepareFallback.setAttribute('aria-expanded', 'true');
+      }
+
+      updateContactOutput();
+      messagePreview?.focus();
+    });
+
+    copyMessage?.addEventListener('click', async () => {
+      updateContactOutput();
+
+      if (!(messagePreview instanceof HTMLTextAreaElement)) return;
+
+      try {
+        await navigator.clipboard.writeText(messagePreview.value);
+        if (copyStatus) copyStatus.textContent = 'Message copied. Open Gmail or Outlook and paste it into a new email.';
+      } catch {
+        messagePreview.select();
+        if (copyStatus) copyStatus.textContent = 'Message selected. Press Ctrl+C to copy it, then open Gmail or Outlook.';
+      }
+    });
+  </script>
+
+  <footer class="footer">
+    <div class="footer-links">
+      {home.footerLinks.map((link) => <a href={link.url}>{link.label}</a>)}
+    </div>
+  </footer>
+</SiteLayout>

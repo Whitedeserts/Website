@@ -1,0 +1,246 @@
+{
+  "pageTitle": "Mohamed Ahmed, PhD - GeoAI and Applied AI Leader",
+  "metaDescription": "Mohamed Ahmed is a GeoAI and applied machine learning leader building production-ready geospatial AI, GenAI, and Earth observation workflows.",
+  "socialTitle": "Mohamed Ahmed, PhD - GeoAI and Applied AI Leader",
+  "socialDescription": "Personal website for Mohamed Ahmed, featuring GeoAI leadership, applied AI research, Earth observation work, publications, teaching, and technical writing.",
+  "name": "Mohamed Ahmed, PhD",
+  "eyebrow": "Location: 51.050° N - 114.085° W",
+  "eyebrowUrl": "https://www.arcgis.com/apps/mapviewer/index.html?center=-114.085,51.050&level=12&basemapUrl=https%3A%2F%2Fservices.arcgisonline.com%2FArcGIS%2Frest%2Fservices%2FWorld_Topo_Map%2FMapServer",
+  "intro": "I build Geospatial AI models and tools for research, government, and industry, with a focus on turning complex geospatial data into scalable solutions and decision-support systems. My background in Arctic Oceanography and Geomatics taught me that the hardest part of AI is rarely the model itself: it is the data, context, and infrastructure beneath it. At heart, I love working with spatial data and just about anything involving maps!",
+  "details": {
+    "role": {
+      "title": "Lead Data Scientist",
+      "organization": "Esri Canada",
+      "suffix": "Education and Research Dept.",
+      "url": "https://www.esri.ca/en-ca/home",
+      "suffixUrl": "https://hed.esri.ca/",
+      "address": [
+        "Calgary Place, Tower 1",
+        "330 5th Avenue SW, Suite 910",
+        "Calgary, AB T2P 0L4"
+      ],
+      "email": "mahmed@esri.ca"
+    },
+    
+    "also": {
+      "title": "Adjunct Professor",
+      "organization": "University of Calgary",
+      "suffix": "Geography Dept.",
+      "url": "https://www.ucalgary.ca/",
+      "suffixUrl": "https://arts.ucalgary.ca/geography/",
+      "address": [
+        "Department of Geography",
+        "2500 University Drive N.W.",
+        "Calgary, AB T2N 1N4"
+      ],
+      "email": "mohamed.ahmed3@ucalgary.ca"
+    }
+  },
+  "researchInterests": [
+    "GeoAI",
+    "Geospatial Data Science",
+    "Remote Sensing & Earth Observation",
+    "Marine Carbon Cycle & Oceanography",
+    "Foundation Models",
+    "Agentic AI",
+    "MLOps & Cloud Computing",
+    "Computer Vision",
+    "Arctic & Climate Systems"
+  ],
+  "linkedin": {
+    "label": "Connect with me on LinkedIn",
+    "url": "https://www.linkedin.com/in/mohamedmmahmed/"
+  },
+  "youtube": {
+    "eyebrow": "YouTube",
+    "title": "Geospatial Nerd",
+    "description": "Subscribe for GeoAI, ArcGIS, Earth observation, and spatial data tutorials.",
+    "label": "Subscribe on YouTube",
+    "url": "https://www.youtube.com/@GeospatialNerd",
+    "image": "/social/geospatial-nerd.svg"
+  },
+  "socialWindow": {
+    "eyebrow": "LinkedIn",
+    "title": "Connect with me on LinkedIn",
+    "description": "I share notes on GeoAI, spatial data science, ArcGIS, teaching, research, and practical AI workflows.",
+    "activityLabel": "Mohamed Ahmed's LinkedIn"
+  },
+  "links": [
+    { "label": "About", "url": "/about" },
+    { "label": "Research", "url": "/research" },
+    { "label": "Work", "url": "/work" }
+  ],
+  "featuredWork": [
+    {
+      "title": "Geospatial AI for beluga whale detection",
+      "summary": "Supported deep learning work with Fisheries and Oceans Canada to detect beluga whales in Arctic imagery from aerial surveys, drones, and satellites, helping distinguish whales from sea ice and whitecaps.",
+      "role": "Collaborated on the geospatial AI workflow and ArcGIS deep learning approach for automated beluga whale detection in large imagery collections.",
+      "result": "Helped showcase how AI and GIS can analyze thousands of images in hours, support marine conservation, and advance non-invasive Arctic ecosystem monitoring.",
+      "meta": "Esri / Esri Canada - marine conservation GeoAI",
+      "url": "https://www.esri.com/about/newsroom/blog/ai-ml-beluga-whale-detection",
+      "supportingLinks": [
+        {
+          "label": "Podcast: Whales or Whitecaps?",
+          "url": "https://resources.esri.ca/geographical-thinking/geographical-thinking-episode-98-whales-or-whitecaps"
+        },
+        {
+          "label": "StoryMap: Beluga whale detection",
+          "url": "https://storymaps.arcgis.com/collections/935ea93a85fb4126a2c23cb7bde33426?item=9"
+        }
+      ],
+      "tags": ["geoai", "beluga-whales", "earth-observation"]
+    },
+    {
+      "title": "State of the Arctic Ocean: CO2 and acidification",
+      "summary": "Contributed as a co-author to Canada's Oceans Now: Arctic Ecosystems 2023, with focus on CO2 cycling, ocean acidification, and how Arctic waters can act as seasonal sources or sinks of atmospheric carbon dioxide.",
+      "role": "Co-authored Arctic ocean carbon and acidification content, connecting marine carbon-system science with broader ecosystem status and climate-change interpretation.",
+      "result": "Helped communicate why CO2 uptake, freshwater input, deep-water residence time, and ocean chemistry matter for understanding Canada's Arctic marine ecosystems.",
+      "meta": "Fisheries and Oceans Canada - Arctic Ocean report",
+      "url": "https://www.dfo-mpo.gc.ca/oceans/publications/soto-rceo/2023/index-eng.html",
+      "supportingLinks": [
+        {
+          "label": "Source or sink: CO2 in Arctic waters",
+          "url": "https://www.dfo-mpo.gc.ca/oceans/publications/soto-rceo/2023/report-rapport-eng.html#_09"
+        },
+        {
+          "label": "Canada's Oceans Now promotional video",
+          "url": "https://youtu.be/t9GyA4onlbo"
+        }
+      ],
+      "tags": ["arctic-ocean", "co2", "ocean-acidification"]
+    },
+    {
+      "title": "AI exposure across Canadian occupations",
+      "summary": "Built an interactive treemap visualizer mapping AI exposure, job outlook, and education requirements across 516 Canadian occupations from ESDC Job Bank NOC data, covering roughly 20 million jobs.",
+      "role": "Built the data model, AI exposure scoring workflow, and interactive treemap visualizer.",
+      "result": "Created a public tool for exploring how AI may reshape work across Canada's labour market.",
+      "meta": "Interactive AI and labour-market visualizer",
+      "url": "https://whitedeserts.github.io/canada-jobs/",
+      "supportingLinks": [
+        {
+          "label": "YouTube quick demo",
+          "url": "https://youtu.be/2RrD9V_yyMs"
+        }
+      ],
+      "tags": ["ai-exposure", "data-visualization", "canada-jobs"]
+    },
+    {
+      "title": "Geospatial foundation models for ArcGIS",
+      "summary": "Packaged Canadian geospatial foundation models for ArcGIS Pro change detection workflows, enabling before-and-after satellite imagery analysis with HLS and Sentinel-2 variants.",
+      "role": "Developed ArcGIS Pro DLPK packaging, Python raster functions, Esri model definitions, and workflow documentation for running foundation models through ArcGIS deep learning tools.",
+      "result": "Made a Canadian geospatial foundation model more accessible to ArcGIS users for classified change detection across Canadian landscapes.",
+      "meta": "GitHub - ArcGIS foundation model packaging",
+      "url": "https://github.com/Whitedeserts/Planaura-ArcGIS",
+      "supportingLinks": [
+        {
+          "label": "YouTube quick demo",
+          "url": "https://youtu.be/4LZG-TzXkTY"
+        },
+        {
+          "label": "Hands-on tutorial",
+          "url": "https://arcg.is/1eiPmj0"
+        }
+      ],
+      "tags": ["foundation-models", "change-detection", "arcgis-pro"]
+    },
+    {
+      "title": "Agentic AI for geospatial workflows",
+      "summary": "Designing agentic workflows that help teams discover, run, explain, and scale geospatial analysis.",
+      "role": "Design agentic workflows, AI assistant patterns, and retrieval-augmented geospatial knowledge systems.",
+      "result": "Moved geospatial AI concepts from demos toward repeatable analysis and decision-support workflows.",
+      "meta": "Enterprise GenAI - applied AI systems",
+      "url": "https://architecture.arcgis.com/en/industry-and-tech-patterns/ai-lens/agentic-ai.html",
+      "supportingLinks": [
+        {
+          "label": "YouTube demo: Agentic AI in ArcGIS",
+          "url": "https://youtu.be/VvOpPu-rbSA"
+        }
+      ],
+      "tags": ["agentic-ai", "genai", "automation"]
+    },
+    {
+      "title": "Research translation and technical leadership",
+      "summary": "Connecting academic, government, and industry partners through workshops, applied research, technical writing, and production-ready machine learning pipelines.",
+      "role": "Lead workshops, write technical resources, mentor students, and support cross-sector applied research collaborations.",
+      "result": "Helped researchers, students, and technical teams adopt geospatial AI through practical examples and guided implementation.",
+      "meta": "50+ invited lectures and workshops",
+      "url": "/speaking",
+      "supportingLinks": [
+        {
+          "label": "Writing and technical articles",
+          "url": "/writing"
+        }
+      ],
+      "tags": ["teaching", "research", "mlops"]
+    }
+  ],
+  "whereIHelp": [
+    {
+      "title": "GeoAI & Earth Observation",
+      "summary": "Turning satellite, aerial, drone, and environmental data into applied AI systems for detection, segmentation, classification, change analysis, and environmental monitoring."
+    },
+    {
+      "title": "Production AI for GIS",
+      "summary": "Taking AI beyond the prototype by integrating models and intelligent workflows into GIS systems that are reproducible, explainable, scalable, and ready for operational use."
+    },
+    {
+      "title": "Agentic AI & Spatial Decision Support",
+      "summary": "Designing AI assistants and agentic workflows that can discover information, reason over spatial context, use geospatial tools, automate analysis, and support better decisions."
+    },
+    {
+      "title": "Applied AI Research & Technical Leadership",
+      "summary": "Leading applied research and translating emerging AI methods into practical technology, strategy, guidance, and learning across industry, government, and academia."
+    }
+  ],
+  "technicalToolkit": [
+    {
+      "category": "Geospatial & Earth Observation",
+      "tools": ["ArcGIS Pro", "ArcGIS Enterprise", "ArcGIS Online", "ArcGIS API for Python", "ArcPy", "DLPK", "Raster Analytics", "Google Earth Engine", "QGIS", "GDAL", "PostGIS", "GeoServer"]
+    },
+    {
+      "category": "AI, ML & Generative AI",
+      "tools": ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face", "Deep Learning", "Computer Vision", "Vision Transformers", "Foundation Models", "Explainable AI", "LLMs", "RAG", "Agentic AI", "MCP", "LangChain", "OpenAI API", "Azure OpenAI", "Google Vertex AI" ]
+    },
+    {
+      "category": "Scientific & Data Computing",
+      "tools": ["Python", "R", "SQL", "NumPy", "Pandas", "SciPy", "Jupyter", "GeoPandas", "Rasterio", "Xarray", "Dask", "Matplotlib", "Seaborn", "Plotly", "Bokeh", "Streamlit"]
+    },
+    {
+      "category": "Cloud, Engineering & MLOps",
+      "tools": ["Google Cloud", "Azure AI", "AWS", "Docker", "Git / GitHub", "FastAPI", "REST APIs", "MLOps", "Model Serving", "CI/CD", "Kubernetes", "Kubeflow", "Data Engineering", "Data Pipelines", "Data Lakes"]
+    }
+  ],
+  "recentWriting": [
+    {
+      "date": "2026-08-10",
+      "label": "Change Detection with Planaura in ArcGIS",
+      "url": "https://arcg.is/1eiPmj0"
+    },
+    {
+      "date": "2026-07-08",
+      "label": "Teaching and Learning GIS in the Age of AI (Part 2 of 3)",
+      "url": "/writing"
+    }
+  ],
+  "contactCta": {
+    "title": "Start a conversation",
+    "description": "Interested in GeoAI, applied research, teaching, or spatial AI workflows? Please reach out to discuss potential collaborations, research, or consulting opportunities.",
+    "email": "mohamed.geo.ahmed@gmail.com",
+    "primaryLabel": "Connect on LinkedIn",
+    "primaryUrl": "https://www.linkedin.com/in/mohamedmmahmed/",
+    "secondaryLabel": "Generate message",
+    "secondaryUrl": "mailto:mohamed.geo.ahmed@gmail.com"
+  },
+  "footerLinks": [
+    { "label": "Email", "url": "mailto:mohamed.geo.ahmed@gmail.com" },
+    { "label": "YouTube", "url": "https://www.youtube.com/@GeospatialNerd" },
+    { "label": "GitHub", "url": "https://github.com/whitedeserts" },
+    { "label": "Research", "url": "/research" },
+    { "label": "Download Resume", "url": "/Resume/Mohamed_Ahmed_Resume.pdf" }
+  ],
+  "photo": {
+    "source": "Photo/mohammed-inspire-headshot.png",
+    "publicPath": "/photo/mohammed-inspire-headshot.png",
+    "alt": "Portrait of Mohamed Ahmed"
+  }
+}

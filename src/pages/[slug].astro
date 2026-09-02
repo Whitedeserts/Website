@@ -1,0 +1,114 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+export function getStaticPaths() {
+  const pages = import.meta.glob('../../content/pages/*.md', {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+  }) as Record<string, string>;
+
+  const escape = (value: string) => value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+
+  const inline = (value: string) => escape(value).replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    (_match, label: string, href: string) => `<a href="${escape(href)}">${label}</a>`,
+  ).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+  const imagePattern = /^!\[([^\]]*)\]\((\S+)(?:\s+"([^"]+)")?\)$/;
+
+  const slugify = (value: string) => value
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
+  const render = (raw: string) => {
+    const html: string[] = [];
+    const listItems: string[] = [];
+    let sectionOpen = false;
+
+    const flushList = () => {
+      if (listItems.length > 0) {
+        html.push(`<ul>${listItems.join('')}</ul>`);
+        listItems.length = 0;
+      }
+    };
+
+    for (const line of raw.replaceAll('\r\n', '\n').trim().split('\n')) {
+      const trimmed = line.trim();
+
+      if (!trimmed) {
+        flushList();
+        continue;
+      }
+
+      if (trimmed.startsWith('- ')) {
+        listItems.push(`<li>${inline(trimmed.slice(2))}</li>`);
+        continue;
+      }
+
+      if (listItems.length > 0 && line !== trimmed && trimmed.startsWith('Thesis:')) {
+        const previous = listItems.pop() ?? '';
+        listItems.push(previous.replace('</li>', `<span class="thesis-line">${inline(trimmed)}</span></li>`));
+        continue;
+      }
+
+      flushList();
+
+      const image = trimmed.match(imagePattern);
+
+      if (image) {
+        const [, alt, src, caption] = image;
+        html.push(`<figure class="content-image"><img src="${escape(src)}" alt="${escape(alt)}" loading="eager" decoding="async" />${caption ? `<figcaption>${inline(caption)}</figcaption>` : ''}</figure>`);
+        continue;
+      }
+
+      if (trimmed.startsWith('### ')) {
+        html.push(`<h3>${inline(trimmed.slice(4))}</h3>`);
+      } else if (trimmed.startsWith('## ')) {
+        if (sectionOpen) {
+          html.push('</section>');
+        }
+
+        const heading = trimmed.slice(3);
+        html.push(`<section class="content-section content-section-${slugify(heading)}"><h2>${inline(heading)}</h2>`);
+        sectionOpen = true;
+      } else if (trimmed.startsWith('# ')) {
+        html.push(`<h1>${inline(trimmed.slice(2))}</h1>`);
+      } else {
+        html.push(`<p>${inline(trimmed)}</p>`);
+      }
+    }
+
+    flushList();
+
+    if (sectionOpen) {
+      html.push('</section>');
+    }
+
+    return html.join('\n');
+  };
+
+  return Object.entries(pages).filter(([path]) => !path.endsWith('/writing.md')).map(([path, raw]) => {
+    const slug = path.split('/').pop()?.replace(/\.md$/, '') ?? '';
+    const title = slug.replace(/-/g, ' ').replace(/^./, (letter) => letter.toUpperCase());
+
+    return {
+      params: { slug },
+      props: { slug, title, html: render(raw) },
+    };
+  });
+}
+
+const { slug, title, html } = Astro.props;
+---
+
+<SiteLayout title={`${title} - Mohamed Ahmed`}>
+  <article class={`content content-${slug}`} set:html={html} />
+</SiteLayout>

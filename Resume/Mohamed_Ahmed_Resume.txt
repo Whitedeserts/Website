@@ -1,0 +1,90 @@
+Page 1 of 2 
+MOHAMED AHMED, Ph.D. 
+Lead Data Scientist | Applied AI / ML 
+ mohamed.geo.ahmed@gmail.com 
+in LinkedIn      G Publications 
+SUMMARY 
+GeoAI and applied machine learning expert with 10+ years of experience turning advanced AI research into 
+operational solutions for industry, government, and research organizations. Currently leading the GeoAI and 
+research program at Esri Canada, with a focus on enterprise GenAI applications, geospatial deep learning, agentic 
+AI workflows, and production-ready ML pipelines. Brings end-to-end experience across research, prototyping, 
+deployment, MLOps, and business implementation. Recognized for mentoring technical teams, building cross-
+functional partnerships, and translating complex AI concepts for executive, government, and external audiences. 
+Ph.D. with a focus on geospatial data science and machine learning, with 18+ peer-reviewed publications. 
+ 
+CORE SKILLS 
+• AI / ML & GenAI: Deep learning, computer vision, transformer-based models, LLMs, NLP, RAG, model fine-tuning, agentic 
+AI workflows, multimodal fusion, supervised and unsupervised learning, reinforcement learning, feature engineering, and 
+classical ML methods including regression, random forests, SVM, kNN, Naive Bayes, PCA, and clustering. 
+• Frameworks & Libraries: PyTorch, TensorFlow/Keras, Scikit-learn, Hugging Face, LangChain, Pandas, NumPy, 
+GeoPandas, Rasterio, Xarray, Matplotlib, Plotly, Pillow, HighCharts, and ArcGIS API for Python. 
+• AI Agents & Enterprise Automation: AI assistant design, agentic workflow design, Microsoft Copilot Studio, MCP, A2A, 
+LLM-powered workflow automation, and enterprise system integration.  
+• Programming & Data Engineering: Python, R, SQL, shell scripting, ETL pipeline development, big-data processing, 
+QA/QC, data lifecycle management, and reproducible analytics workflows.  
+• Cloud, MLOps & Deployment: Azure AI, AWS, Google Cloud Platform, FastAPI, REST APIs, Docker, Git/GitHub, CI/CD 
+fundamentals, model packaging, monitoring, and reproducible machine learning workflows.  
+• Visualization & Communication: ArcGIS Dashboards, Experience Builder, geospatial visualization, executive reporting, 
+technical storytelling, and communication of complex AI concepts to technical, executive, and non -technical audiences. 
+• Leadership & Delivery: Cross-functional technical leadership, team mentorship, stakeholder engagement with senior 
+executives and government partners, agile project delivery, proposal development, and public speaking.  
+PROFESSIONAL EXPERIENCE 
+Lead Data Scientist & GeoAI Lead 2022 – Present 
+Esri Canada, Canada  
+▸ Lead Esri Canada’s GeoAI and research initiatives, defining technical direction for AI, machine learning, and deep 
+learning integration across geospatial data platforms used by academic, government, and research organizations.  
+▸ Develop scalable geospatial AI workflows for computer vision, object detection, classification, change detection, and 
+large-scale spatial data processing using satellite, aerial, drone, and enterprise geospatial datasets. 
+▸ Collaborate with senior researchers, academic leaders, and government agencies to translate emerging GeoAI 
+capabilities into applied solutions and decision-support workflows. 
+▸ Author technical blogs and learning resources on GeoAI, and emerging spatial data technologies, helping technical and 
+non-technical audiences understand and adopt AI-enabled geospatial workflows. 
+▸ Delivered 50+ invited lectures, technical workshops, and conference presentations across 10+ Canadian universities, 
+government agencies, and national/international events.  
+▸ Developed ArcGIS-compatible DLPKs for geospatial foundation models, including model configuration, metadata 
+preparation, and integration testing for satellite imagery analysis and change detection workflows.  
+ 
+
+Page 2 of 2 
+Adjunct Professor 2025 – Present 
+University of Calgary, Canada  
+▸ Teach and mentor undergraduate and graduate students in geography department, focusing on GIS, remote sensing, 
+spatial data science, and applied geospatial technologies. 
+Senior Researcher & Project Manager Lead 2022 – 2025 
+eLEAF B.V., Netherlands (Part-Time)  
+▸ Led international applied research project in Africa and Europe, coordinating a multidisciplinary team to design and 
+validate a prototype data system for estimating land-based negative carbon emissions. 
+Postdoctoral Research Scientist  2021 – 2022 
+University of Victoria, Canada   
+▸ Designed and implemented machine learning models to analyze large -scale oceanographic observations from the 
+global Argo float network, supporting new estimates of oxygen variability in the Northwest Pacific.  
+Postdoctoral Research Scientist  2020 – 2021 
+University of Calgary, Canada  
+▸ Designed and implemented a GIS and machine learning data pipeline integrating time -series satellite imagery, in-situ 
+Arctic field observations, and neural network models to estimate Canada’s marine carbon sink in the Arctic.  
+Lecturer  2013 – 2015 
+Beni-Suef University, Egypt  
+▸ Designed and taught undergraduate and graduate courses in GIS, remote sensing, geology, hydrology, aerial 
+photography, and applied spatial data analysis. 
+Research Associate 2012 – 2013 
+Lund University, Sweden  
+▸ Developed an automated GIS and remote sensing workflow to process  decadal raw satellite imagery into standardized 
+analytical outputs for a government-funded land cover dynamics project across Egypt. 
+EDUCATION 
+Ph.D., Geography (GPA: 4.0) | University of Calgary, Canada 2015 – 2020 
+Thesis: Air-Sea CO₂ Cycling in Arctic Coastal Seas: Case Studies in the Canadian Arctic Archipelago and 
+Hudson Bay 
+ 
+M.Sc. (with Distinction), Geomatics | Lund University, Sweden 2010 – 2012 
+Thesis: Significance of Soil Moisture on Vegetation Dynamics in the African Sahel, 1982–2008  
+B.Sc. (Honours, 1st Class), Geology | Beni-Suef University, Egypt 2003 – 2007 
+Thesis: Environmental pollution of cement industry in urban areas: A case study in Beni-Suef city, Egypt.   
+SELECTED AWARDS & RECOGNITION 
+• PRODIGY Fellow | Pacific Rim Ocean Data Mobilization & Technology Program ($70,000, 2021) 
+• Geography Department Excellent Research Award | University of Calgary (2020) 
+• Dean's Doctoral Scholarship | University of Calgary ($15,000, 2019) 
+• Best Oral Presentation Award | Annual Geography Department Conference, University of Calgary (2018) 
+• Eyes High International Doctoral Scholarship | University of Calgary ($12,000, 2016) 
+• EU Bridge Building Scholarship | Lund University, Sweden ($35,000, 2010–2012) 
+• Top Student Fellowship | Beni-Suef University, Egypt ($15 000, 2009) 
+• Faculty Excellence Student Award | Beni-Suef University, Egypt (2008)  

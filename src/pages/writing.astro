@@ -1,0 +1,237 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const posts = [
+  {
+    title: 'Teaching and Learning GIS in the Age of AI (Part 2 of 3)',
+    date: '2026-07-08T09:00:02',
+    url: 'https://resources.esri.ca/education-and-research/teaching-and-learning-gis-in-the-age-of-ai-part-2-of-3',
+    image: 'https://res.cloudinary.com/uf-528100/image/upload/v1782760292/blog2_thumbnail_opowwe.png',
+    credit: 'Co-authored with Steven Edwards',
+    description: 'AI is reshaping GIS education. But spatial judgment still belongs to the analyst. Part 2 of a series on teaching and learning GIS in the age of AI.',
+  },
+  {
+    title: 'Teaching and Learning GIS in the Age of AI (Part 1 of 3)',
+    date: '2026-06-30T07:41:11',
+    url: 'https://resources.esri.ca/education-and-research/teaching-and-learning-gis-in-the-age-of-ai',
+    image: 'https://res.cloudinary.com/uf-528100/image/upload/v1777495310/Edwards_Esri_Blog_Thumbnail_gevnx6.png',
+    credit: 'Co-authored with Steven Edwards',
+    description: 'AI is reshaping GIS education. But spatial judgment still belongs to the analyst. A three-part series on teaching and learning GIS in the age of AI.',
+  },
+  {
+    title: 'What Makes a Place Runnable?',
+    date: '2026-04-07T09:00:06',
+    url: 'https://resources.esri.ca/education-and-research/what-makes-a-place-runnable',
+    image: 'https://res.cloudinary.com/uf-528100/image/upload/v1774961916/31Mar26_Blog_ED_What_Makes_a_Place_Runnable_Thumbnail_gbz7md.jpg',
+    description: 'Mohamed Ahmed from Esri Canada interviews Stella Harden, winner of the Esri Canada Best Paper Award at the 2026 SKI Conference in Banff, Alberta.',
+  },
+  {
+    title: 'eDNA and GIS for Powerful and Scalable Biodiversity Monitoring - Part 2',
+    date: '2024-12-11T09:00:05',
+    url: 'https://resources.esri.ca/education-and-research/edna-and-gis-for-powerful-and-scalable-biodiversity-monitoring-part-2',
+    image: 'https://res.cloudinary.com/uf-528100/image/upload/v1732740846/GettyImages-1491115807_1_zvowcv.jpg',
+    description: 'Discover how pairing eDNA with GIS creates a powerful, scalable solution for biodiversity monitoring in response to climate change.',
+  },
+  {
+    title: 'eDNA and GIS for Powerful and Scalable Biodiversity Monitoring - Part 1',
+    date: '2024-10-24T13:00:02',
+    url: 'https://resources.esri.ca/education-and-research/edna-and-gis-for-powerful-and-scalable-biodiversity-monitoring-part-1',
+    image: 'https://res.cloudinary.com/uf-528100/image/upload/v1729614497/DNA_Earth_dexv0q.jpg',
+    description: 'Discover how pairing eDNA with GIS creates a powerful and scalable solution for biodiversity monitoring and tracking species change in response to climate change.',
+  },
+  {
+    title: 'Visualizing Tipping Elements to Better Understand Climate Change - Part 3',
+    date: '2024-02-29T09:00:03',
+    url: 'https://resources.esri.ca/education-and-research/visualizing-tipping-elements-to-better-understand-climate-change-part-3',
+    image: 'https://content.cdntwrk.com/files/aHViPTYyODg3JmNtZD1pdGVtZWRpdG9yaW1hZ2UmZmlsZW5hbWU9aXRlbWVkaXRvcmltYWdlXzY1ZGMxN2FkMDRiMDEuanBnJnZlcnNpb249MDAwMCZzaWc9OWNjMzMwODc4ODhkOTkxMWVjMzIxMjhjYTBjNzlhN2E%253D',
+    description: 'Tipping elements connected to ocean and air circulations are at risk of crossing tipping points and causing significant changes in Earth climate.',
+  },
+  {
+    title: 'Visualizing Tipping Elements to Better Understand Climate Change - Part 2',
+    date: '2023-12-12T09:16:33',
+    url: 'https://resources.esri.ca/education-and-research/visualizing-tipping-elements-to-better-understand-climate-change-part-2',
+    image: 'https://content.cdntwrk.com/files/aHViPTYyODg3JmNtZD1pdGVtZWRpdG9yaW1hZ2UmZmlsZW5hbWU9aXRlbWVkaXRvcmltYWdlXzY1NzFlYWY4ZDZhMTguanBnJnZlcnNpb249MDAwMCZzaWc9M2NhYzQ4OTE1OTcwMzZjYjk3ZDNmN2Q2ZTRkN2QwZGQ%253D',
+    description: 'Ice sheets, frozen soil ground, Arctic sea ice, and marine methane deposits could reach critical thresholds, leading to major shifts in our climate.',
+  },
+  {
+    title: 'Visualizing Tipping Elements to Better Understand Climate Change - Part 1',
+    date: '2023-10-17T09:00:01',
+    url: 'https://resources.esri.ca/education-and-research/visualizing-tipping-elements-to-better-understand-climate-change-part-1',
+    image: 'https://content.cdntwrk.com/files/aHViPTYyODg3JmNtZD1pdGVtZWRpdG9yaW1hZ2UmZmlsZW5hbWU9aXRlbWVkaXRvcmltYWdlXzY1MjBhNzg4MzFhZDUucG5nJnZlcnNpb249MDAwMCZzaWc9ZjhkMDgyN2NiZjgwZDAyNzhhOTJkYjVmOTVkYmE1NTY%253D',
+    description: 'Mapping Earth climate tipping elements at regional and global scales is important to raise public awareness and for conducting risk assessments.',
+  },
+  {
+    title: 'Importing and Visualizing Near-Real Time Argo Floats Data in ArcGIS',
+    date: '2023-07-19T15:55:34',
+    url: 'https://resources.esri.ca/education-and-research/importing-and-visualizing-near-real-time-argo-floats-data-in-arcgis',
+    image: 'https://content.cdntwrk.com/files/aHViPTYyODg3JmNtZD1pdGVtZWRpdG9yaW1hZ2UmZmlsZW5hbWU9aXRlbWVkaXRvcmltYWdlXzY0YjE4MTU1YjRhNzIucG5nJnZlcnNpb249MDAwMCZzaWc9NzVhYzhmMGVlZTkwYmJmNjk1MTIyMzUxODFlMGJlMmM%253D',
+    description: 'Visualizing Argo floats data in ArcGIS presents a powerful tool to monitor and visualize valuable information about the global ocean.',
+  },
+  {
+    title: 'Pretrained Deep Learning Models: Why are they useful and how to use them?',
+    date: '2023-07-06T13:00:02',
+    url: 'https://resources.esri.ca/education-and-research/pretrained-deep-learning-models-in-the-arcgis-system-why-are-they-useful-and-how-to-use-them',
+    image: 'https://content.cdntwrk.com/files/aHViPTYyODg3JmNtZD1pdGVtZWRpdG9yaW1hZ2UmZmlsZW5hbWU9aXRlbWVkaXRvcmltYWdlXzY0YTQ2ZTBhYWVmZjIucG5nJnZlcnNpb249MDAwMCZzaWc9MDkxMjZmZWE3ZDIzYWY4NzYzNWFiMmE4MGY1NWUyNmE%253D',
+    description: 'Learn how to use the pretrained deep learning models in ArcGIS to extract features, classify pixels, recognize texts, or detect objects from images.',
+  },
+  {
+    title: 'Unlocking the Potential of Deep Learning in the ArcGIS System',
+    date: '2023-04-18T10:00:01',
+    url: 'https://resources.esri.ca/education-and-research/unlocking-the-potential-of-deep-learning-in-the-arcgis-system',
+    image: 'https://content.cdntwrk.com/files/aHViPTYyODg3JmNtZD1pdGVtZWRpdG9yaW1hZ2UmZmlsZW5hbWU9aXRlbWVkaXRvcmltYWdlXzY0Mzk4ZTJkNzA1MGMuanBnJnZlcnNpb249MDAwMCZzaWc9YTcyZDRlMjIwYzEyODljNTdhOWMwMmJmMTVkNTBkMmY%253D',
+    description: 'Discover how to build algorithms to make predictions and find patterns in large datasets following best practices to ensure accuracy and efficiency.',
+  },
+];
+
+const tutorials = [
+  {
+    title: 'Change Detection with Planaura in ArcGIS',
+    url: 'https://arcg.is/1eiPmj0',
+    image: 'https://cdn.arcgis.com/sharing/rest/content/items/e18f6e446f3047ec9129c03e0ec76b42/resources/0pW_gf_hoMYLDWRHSXnca.png?w=400',
+    topic: 'GeoAI',
+  },
+  {
+    title: 'Building Damage Assessment with GeoAI in ArcGIS',
+    url: 'https://arcg.is/1X4Crm0',
+    image: 'https://cdn.arcgis.com/sharing/rest/content/items/0fcd408146334271bc26e5541537d8dd/resources/dZnojFdOLoTTnYZI8qLYU.png?w=400',
+    topic: 'GeoAI',
+  },
+  {
+    title: 'Mapping the Invisible',
+    url: 'https://arcg.is/000SmO',
+    image: 'https://cdn.arcgis.com/sharing/rest/content/items/1c00f6b4a5b64ee8bd29d383eb16aa20/resources/Kf1EA5QRRFqHcR2htc-8f.jpg?w=400',
+    topic: 'Biodiversity and Environmental DNA',
+  },
+  {
+    title: 'Ocean Stories',
+    url: 'https://arcg.is/0q8qDv',
+    image: 'https://www.arcgis.com/sharing/rest/content/items/24de2959e59c40e189ee47f952d6f9d4/info/thumbnail/thumbnail.jpeg?w=800',
+    topic: 'Oceanography',
+  },
+  {
+    title: 'Hotter Oceans',
+    url: 'https://arcg.is/0CzOrO0',
+    image: 'https://cdn.arcgis.com/sharing/rest/content/items/10c53818f87b403a8742f1c68d913f5b/resources/0dN9Kk9myVuM4B1IYU9mH.png?w=400',
+    topic: 'Oceanography',
+  },
+  {
+    title: 'Budgeting the Marine Carbon Sink in the Canadian Arctic',
+    url: 'https://arcg.is/1SPbHi',
+    image: 'https://cdn.arcgis.com/sharing/rest/content/items/42a45eb0ed644859a5ec7b97da30109c/resources/sctGHrG4w1Rt-t5wqRz8d.png?w=400',
+    topic: 'Arctic Oceanography',
+  },
+  {
+    title: 'Top 20 Climate Change Resources for GIS Users',
+    url: 'https://arcg.is/1DT4q10',
+    image: 'https://cdn.arcgis.com/sharing/rest/content/items/89532fa6301449a291ceb5629ebce6b3/resources/f2zSfrQeE7zTGzRfUceEa.jpg?w=400',
+    topic: 'Climate Science',
+  },
+  {
+    title: 'Addressing and Understanding Climate Change with GIS',
+    url: 'https://arcg.is/14PCLy0',
+    image: 'https://cdn.arcgis.com/sharing/rest/content/items/306717bf99804e8aa0a7983c3de53a3f/resources/fy60RkkPTCi2EFuMJ7yN-.png?w=400',
+    topic: 'Climate Science',
+  },
+  {
+    title: 'Ocean GIS Careers',
+    url: 'https://arcg.is/1OLemm0',
+    image: 'https://cdn.arcgis.com/sharing/rest/content/items/8d47c05eaea24c34a217ad7e340fb9e5/resources/mpTudGQuw6UlrYYiGJnpl.jpeg?w=400',
+    topic: 'Careers',
+  },
+  {
+    title: 'Building Footprints Extraction Tutorial',
+    url: 'https://www.arcgis.com/home/item.html?id=461d59ad6de24cb8b3a085847af61ac0#overview',
+    image: 'https://www.arcgis.com/sharing/rest/content/items/461d59ad6de24cb8b3a085847af61ac0/info/thumbnail/thumbnail1744395833460.png',
+    topic: 'GeoAI',
+  },
+  {
+    title: 'Arctic Sea Ice Decline (1979-2024)',
+    url: 'https://arcg.is/1vTyyu',
+    image: 'https://cdn.arcgis.com/sharing/rest/content/items/4530b4d3da454c7aa5c5af00b0412723/resources/8XEKrfiBZTsOvtJeAg5uO.jpg?w=400',
+    topic: 'Arctic Climate',
+  },
+  {
+    title: 'Object Detection Using Deep Learning',
+    url: 'https://edu.maps.arcgis.com/home/item.html?id=0ad28f70495040238c9226fc4cdd501e#overview',
+    image: 'https://www.arcgis.com/sharing/rest/content/items/0ad28f70495040238c9226fc4cdd501e/info/thumbnail/thumbnail1728357929509.png',
+    topic: 'GeoAI',
+  },
+];
+
+const formatDate = (value: string) => new Intl.DateTimeFormat('en', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+}).format(new Date(value));
+---
+
+<SiteLayout
+  title="Writing - Mohamed Ahmed"
+  description="Technical writing by Mohamed Ahmed on GeoAI, ArcGIS, remote sensing, climate, and applied geospatial AI."
+>
+  <section class="writing-page">
+    <div class="writing-hero">
+      <p class="eyebrow">Writing</p>
+      <h1>Exploring ideas, workflows, and emerging directions in GIS and geospatial AI</h1>
+      <p class="intro">
+        I write to make GeoAI and applied machine learning easier to understand,
+        evaluate, and use. These articles connect research ideas with practical
+        geospatial systems for GIS professionals, researchers, students,
+        government teams, and technical leaders.
+      </p>
+      <a class="source-link" href="https://resources.esri.ca/authors/mohamed-ahmed" target="_blank" rel="noreferrer">
+        View all on Esri Canada Resources
+      </a>
+    </div>
+
+    <section class="writing-section" aria-labelledby="blogs-heading">
+      <div class="section-heading-row">
+        <p class="eyebrow">Blogs</p>
+        <h2 id="blogs-heading">Esri Canada articles</h2>
+      </div>
+      <div class="blog-grid" aria-label="Esri Canada articles by Mohamed Ahmed">
+      {
+        posts.map((post, index) => (
+          <article class="blog-card">
+            <a class="blog-thumb" href={post.url} target="_blank" rel="noreferrer" aria-label={post.title}>
+              <img src={post.image} alt="" loading="lazy" />
+              <span class="resource-index">{String(index + 1).padStart(2, '0')}</span>
+            </a>
+            <div class="blog-card-body">
+              <div class="blog-meta-row">
+                <p class="date">{formatDate(post.date)}</p>
+                {'credit' in post && <span class="credit-badge">{post.credit}</span>}
+              </div>
+              <h2><a href={post.url} target="_blank" rel="noreferrer">{post.title}</a></h2>
+              <p>{post.description}</p>
+            </div>
+          </article>
+        ))
+      }
+      </div>
+    </section>
+
+    <section class="writing-section" aria-labelledby="tutorials-heading">
+      <div class="section-heading-row">
+        <p class="eyebrow">Tutorials</p>
+        <h2 id="tutorials-heading">Tutorials and GIS resources</h2>
+      </div>
+      <div class="resource-grid" aria-label="Tutorials and GIS resources by Mohamed Ahmed">
+        {
+          tutorials.map((tutorial, index) => (
+            <article class="resource-card">
+              <a class="resource-thumb" href={tutorial.url} target="_blank" rel="noreferrer" aria-label={tutorial.title}>
+                <img src={tutorial.image} alt="" loading="lazy" />
+                <span class="resource-index">{String(index + 1).padStart(2, '0')}</span>
+              </a>
+              <div class="resource-card-body">
+                <p class="resource-topic">{tutorial.topic}</p>
+                <h3><a href={tutorial.url} target="_blank" rel="noreferrer">{tutorial.title}</a></h3>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </section>
+</SiteLayout>

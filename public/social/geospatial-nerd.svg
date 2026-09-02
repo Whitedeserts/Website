@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Geospatial Nerd YouTube channel graphic</title>
+  <desc id="desc">A stylized globe with orbit lines, satellite dots, and Geospatial Nerd text.</desc>
+  <defs>
+    <radialGradient id="space" cx="50%" cy="42%" r="70%">
+      <stop offset="0%" stop-color="#1f4e43"/>
+      <stop offset="58%" stop-color="#18231f"/>
+      <stop offset="100%" stop-color="#0f1714"/>
+    </radialGradient>
+    <radialGradient id="earth" cx="42%" cy="34%" r="68%">
+      <stop offset="0%" stop-color="#dff6ef"/>
+      <stop offset="48%" stop-color="#55bfa8"/>
+      <stop offset="100%" stop-color="#1f6f8f"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f1c27a"/>
+      <stop offset="100%" stop-color="#c48736"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" rx="34" fill="url(#space)"/>
+  <circle cx="330" cy="238" r="126" fill="url(#earth)" stroke="#dff6ef" stroke-width="4" opacity="0.95"/>
+  <path d="M250 168c44 25 98 23 150 4 21 28 30 64 20 101-41-9-82-7-124 8-22-28-37-65-46-113z" fill="#8abf42" opacity="0.85"/>
+  <path d="M360 133c34 10 61 29 79 55-25 6-46 5-64-6-13-15-18-31-15-49z" fill="#f6f1df" opacity="0.8"/>
+  <path d="M225 238c59-52 188-67 308-34 119 33 185 100 146 149-38 47-163 56-283 25" fill="none" stroke="#6fd7d1" stroke-width="8" opacity="0.85"/>
+  <path d="M191 290c100-24 259-27 399-4" fill="none" stroke="#dff6ef" stroke-width="2" opacity="0.28"/>
+  <circle cx="672" cy="352" r="10" fill="#6fd7d1"/>
+  <circle cx="198" cy="293" r="8" fill="#6fd7d1"/>
+  <g transform="translate(620 118) rotate(22)">
+    <rect x="-16" y="-16" width="32" height="32" rx="8" fill="#dff6ef"/>
+    <rect x="-80" y="-22" width="48" height="44" rx="5" fill="#2f8db2" stroke="#dff6ef" stroke-width="3"/>
+    <rect x="32" y="-22" width="48" height="44" rx="5" fill="#2f8db2" stroke="#dff6ef" stroke-width="3"/>
+    <path d="M-64-22v44M-48-22v44M48-22v44M64-22v44M-80 0h48M32 0h48" stroke="#dff6ef" stroke-width="2" opacity="0.55"/>
+  </g>
+  <path d="M190 420c122 28 265 27 420-4" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linecap="round"/>
+  <text x="88" y="402" fill="#fffdf7" font-family="Bricolage Grotesque, Segoe UI, sans-serif" font-size="78" font-weight="900" letter-spacing="2">GEOSPATIAL</text>
+  <text x="105" y="490" fill="#6fd7d1" font-family="Bricolage Grotesque, Segoe UI, sans-serif" font-size="92" font-weight="900" letter-spacing="4">NERD</text>
+</svg>

@@ -1,0 +1,134 @@
+---
+interface Props {
+  titles: string[];
+}
+
+const { titles } = Astro.props;
+const shortestTitleLength = titles.reduce((shortest, title) => Math.min(shortest, title.length), Infinity);
+---
+
+<p class="rotating-title" data-rotating-title data-titles={JSON.stringify(titles)}>
+  <span>I'm </span>
+  <span class="rotating-title__slot" aria-hidden="true" style={`--title-ch: ${shortestTitleLength + 1}ch`}>
+    <span data-rotating-title-text>{titles[0]}</span><span class="rotating-title__cursor"></span>
+  </span>
+  <span class="sr-only">My professional roles include {titles.join(', ')}.</span>
+</p>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('[data-rotating-title]').forEach((element) => {
+    const textElement = element.querySelector('[data-rotating-title-text]');
+    const rawTitles = element.getAttribute('data-titles');
+
+    if (!(textElement instanceof HTMLElement) || !rawTitles) return;
+
+    const titles = JSON.parse(rawTitles) as string[];
+    if (titles.length < 2) return;
+
+    if (reduceMotion) {
+      textElement.textContent = titles[0];
+      return;
+    }
+
+    let titleIndex = 0;
+    let characterIndex = titles[0].length;
+    let deleting = true;
+
+    const tick = () => {
+      const currentTitle = titles[titleIndex];
+
+      if (deleting) {
+        characterIndex -= 1;
+        textElement.textContent = currentTitle.slice(0, characterIndex);
+
+        if (characterIndex === 0) {
+          deleting = false;
+          titleIndex = (titleIndex + 1) % titles.length;
+          window.setTimeout(tick, 260);
+          return;
+        }
+
+        window.setTimeout(tick, 42);
+        return;
+      }
+
+      const nextTitle = titles[titleIndex];
+      characterIndex += 1;
+      textElement.textContent = nextTitle.slice(0, characterIndex);
+
+      if (characterIndex === nextTitle.length) {
+        deleting = true;
+        window.setTimeout(tick, 1700);
+        return;
+      }
+
+      window.setTimeout(tick, 58);
+    };
+
+    window.setTimeout(tick, 1400);
+  });
+</script>
+
+<style>
+  .rotating-title {
+    color: var(--accent-strong);
+    font-size: clamp(1.16rem, 2.1vw, 1.55rem);
+    font-weight: 750;
+    line-height: 1.35;
+    margin: -6px 0 20px;
+    max-width: 760px;
+  }
+
+  .rotating-title__slot {
+    color: var(--link-hover);
+    display: inline-block;
+    min-width: min(var(--title-ch), 100%);
+    white-space: nowrap;
+  }
+
+  .rotating-title__cursor {
+    animation: cursor-blink 1s steps(2, start) infinite;
+    border-right: 2px solid var(--gold);
+    display: inline-block;
+    height: 1em;
+    margin-left: 0.08em;
+    transform: translateY(0.12em);
+  }
+
+  .sr-only {
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  @keyframes cursor-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rotating-title__cursor {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .rotating-title {
+      font-size: 1.08rem;
+    }
+
+    .rotating-title__slot {
+      display: block;
+      margin-top: 2px;
+    }
+  }
+</style>
