@@ -240,7 +240,7 @@
   ],
   "photo": {
     "source": "Photo/mohammed-inspire-headshot.png",
-    "publicPath": "/photo/mohammed-inspire-headshot.png",
+    "publicPath": "/photo/mohammed-inspire-headshot.webp",
     "alt": "Portrait of Mohamed Ahmed"
   }
 }
