@@ -150,7 +150,7 @@ const rotatingTitles = [
         <input name="company" type="text" autocomplete="organization" placeholder="Organization, lab, or team" />
       </label>
       <label>
-        <span>Project type</span>
+        <span>Message type</span>
         <select name="topic">
           <option>GeoAI collaboration</option>
           <option>Research or speaking</option>
@@ -160,8 +160,8 @@ const rotatingTitles = [
         </select>
       </label>
       <label class="message-field">
-        <span>Project details</span>
-        <textarea name="message" rows="5" placeholder="Tell me what you are working on, what kind of help you need, or where you would like to collaborate."></textarea>
+        <span>Message details</span>
+        <textarea name="message" rows="5" placeholder="Tell me what you would like to discuss, what kind of help you need, or where you would like to collaborate."></textarea>
       </label>
       <div class="message-actions">
         <button type="button" id="prepare-fallback" aria-expanded="false" aria-controls="browser-fallback">Prepare browser fallback</button>
@@ -172,7 +172,7 @@ const rotatingTitles = [
           <span>Prepare browser fallback</span>
           <p>No local mail app? Copy the browser-safe message, then open Gmail or Outlook.</p>
         </div>
-        <textarea id="message-preview" rows="6" readonly placeholder="Your generated message will appear here."></textarea>
+        <textarea id="message-preview" rows="6" placeholder="Your generated message will appear here."></textarea>
         <div class="contact-actions">
           <button type="button" id="copy-message">Copy message</button>
           <a class="contact-secondary" id="gmail-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@mohamedahmed.ca" target="_blank" rel="noreferrer">Open Gmail</a>
@@ -190,8 +190,10 @@ const rotatingTitles = [
     const browserFallback = document.getElementById('browser-fallback');
     const copyMessage = document.getElementById('copy-message');
     const copyStatus = document.getElementById('copy-status');
+    const emailAppLink = document.querySelector('.email-app-link');
     const gmailLink = document.getElementById('gmail-link');
     const outlookLink = document.getElementById('outlook-link');
+    let previewHasCustomEdits = false;
 
     const buildMessage = () => {
       if (!contactForm) return { recipient: '', subject: '', body: '' };
@@ -208,7 +210,7 @@ const rotatingTitles = [
         name && `Name: ${name}`,
         email && `Email: ${email}`,
         company && `Company / team: ${company}`,
-        `Project type: ${topic}`,
+        `Message type: ${topic}`,
         '',
         message || 'Hello Mohamed,',
       ].filter(Boolean).join('\n');
@@ -216,18 +218,55 @@ const rotatingTitles = [
       return { recipient, subject, body };
     };
 
+    const formatMessagePreview = ({ subject, body }) => `Subject: ${subject}\n\n${body}`;
+
+    const parseMessagePreview = (generatedMessage) => {
+      if (!(messagePreview instanceof HTMLTextAreaElement)) return generatedMessage;
+
+      const previewValue = messagePreview.value.trim();
+      if (!previewValue) return generatedMessage;
+
+      const subjectMatch = previewValue.match(/^Subject:\s*(.*?)(?:\r?\n){2}([\s\S]*)$/i);
+      if (subjectMatch) {
+        return {
+          ...generatedMessage,
+          subject: subjectMatch[1].trim() || generatedMessage.subject,
+          body: subjectMatch[2].trim() || generatedMessage.body,
+        };
+      }
+
+      return {
+        ...generatedMessage,
+        body: previewValue,
+      };
+    };
+
+    const getEmailPayload = () => {
+      const generatedMessage = buildMessage();
+
+      if (previewHasCustomEdits) {
+        return parseMessagePreview(generatedMessage);
+      }
+
+      return generatedMessage;
+    };
+
     const updateMessagePreview = () => {
-      const { subject, body } = buildMessage();
+      const generatedMessage = buildMessage();
 
       if (messagePreview instanceof HTMLTextAreaElement) {
-        messagePreview.value = `Subject: ${subject}\n\n${body}`;
+        messagePreview.value = formatMessagePreview(generatedMessage);
       }
     };
 
-    const updateBrowserEmailLinks = () => {
-      const { recipient, subject, body } = buildMessage();
+    const updateEmailLinks = () => {
+      const { recipient, subject, body } = getEmailPayload();
       const encodedSubject = encodeURIComponent(subject);
       const encodedBody = encodeURIComponent(body);
+
+      if (emailAppLink instanceof HTMLAnchorElement) {
+        emailAppLink.href = `mailto:${recipient}?subject=${encodedSubject}&body=${encodedBody}`;
+      }
 
       if (gmailLink instanceof HTMLAnchorElement) {
         gmailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodedSubject}&body=${encodedBody}`;
@@ -239,15 +278,35 @@ const rotatingTitles = [
     };
 
     const updateContactOutput = () => {
-      updateMessagePreview();
-      updateBrowserEmailLinks();
+      if (!previewHasCustomEdits) {
+        updateMessagePreview();
+      }
+
+      updateEmailLinks();
     };
 
-    contactForm?.addEventListener('input', updateBrowserEmailLinks);
-    contactForm?.addEventListener('change', updateBrowserEmailLinks);
+    const handleContactFormUpdate = (event) => {
+      if (event.target !== messagePreview) {
+        previewHasCustomEdits = false;
+      }
+
+      updateContactOutput();
+    };
+
+    contactForm?.addEventListener('input', handleContactFormUpdate);
+    contactForm?.addEventListener('change', handleContactFormUpdate);
     contactForm?.addEventListener('submit', (event) => event.preventDefault());
 
-    updateBrowserEmailLinks();
+    messagePreview?.addEventListener('input', () => {
+      previewHasCustomEdits = true;
+      updateEmailLinks();
+    });
+
+    emailAppLink?.addEventListener('click', updateEmailLinks);
+    gmailLink?.addEventListener('click', updateEmailLinks);
+    outlookLink?.addEventListener('click', updateEmailLinks);
+
+    updateContactOutput();
 
     prepareFallback?.addEventListener('click', () => {
       if (browserFallback instanceof HTMLElement) {
