@@ -115,7 +115,7 @@
       "role": "Built the data model, AI exposure scoring workflow, and interactive treemap visualizer.",
       "result": "Created a public tool for exploring how AI may reshape work across Canada's labour market.",
       "meta": "Interactive AI and labour-market visualizer",
-      "url": "https://whitedeserts.github.io/canada-jobs/",
+      "url": "https://youtu.be/2RrD9V_yyMs",
       "supportingLinks": [
         {
           "label": "YouTube quick demo",
@@ -129,8 +129,8 @@
       "summary": "Packaged Canadian geospatial foundation models for ArcGIS Pro change detection workflows, enabling before-and-after satellite imagery analysis with HLS and Sentinel-2 variants.",
       "role": "Developed ArcGIS Pro DLPK packaging, Python raster functions, Esri model definitions, and workflow documentation for running foundation models through ArcGIS deep learning tools.",
       "result": "Made a Canadian geospatial foundation model more accessible to ArcGIS users for classified change detection across Canadian landscapes.",
-      "meta": "GitHub - ArcGIS foundation model packaging",
-      "url": "https://github.com/Whitedeserts/Planaura-ArcGIS",
+      "meta": "ArcGIS foundation model packaging",
+      "url": "https://arcg.is/1eiPmj0",
       "supportingLinks": [
         {
           "label": "YouTube quick demo",
@@ -207,7 +207,7 @@
     },
     {
       "category": "Cloud, Engineering & MLOps",
-      "tools": ["Google Cloud", "Azure AI", "AWS", "Docker", "Git / GitHub", "FastAPI", "REST APIs", "MLOps", "Model Serving", "CI/CD", "Kubernetes", "Kubeflow", "Data Engineering", "Data Pipelines", "Data Lakes"]
+      "tools": ["Google Cloud", "Azure AI", "AWS", "Docker", "Version Control", "FastAPI", "REST APIs", "MLOps", "Model Serving", "CI/CD", "Kubernetes", "Kubeflow", "Data Engineering", "Data Pipelines", "Data Lakes"]
     }
   ],
   "recentWriting": [
@@ -234,7 +234,6 @@
   "footerLinks": [
     { "label": "Email", "url": "mailto:mohamed.geo.ahmed@gmail.com" },
     { "label": "YouTube", "url": "https://www.youtube.com/@GeospatialNerd" },
-    { "label": "GitHub", "url": "https://github.com/whitedeserts" },
     { "label": "Research", "url": "/research" },
     { "label": "Download Resume", "url": "/Resume/Mohamed_Ahmed_Resume.pdf" }
   ],
