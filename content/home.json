@@ -6,8 +6,7 @@
   "name": "Mohamed Ahmed, PhD",
   "eyebrow": "Location: 51.050° N - 114.085° W",
   "eyebrowUrl": "https://www.arcgis.com/apps/mapviewer/index.html?center=-114.085,51.050&level=12&basemapUrl=https%3A%2F%2Fservices.arcgisonline.com%2FArcGIS%2Frest%2Fservices%2FWorld_Topo_Map%2FMapServer",
-  "intro": "I build Geospatial AI models and tools for research, government, and industry, with a focus on turning complex geospatial data into scalable solutions and decision-support systems. My background in Arctic Oceanography and Geomatics taught me that the hardest part of AI is rarely the model itself: it is the data, context, and infrastructure beneath it. At heart, I love working with spatial data and just about anything involving maps!",
-  "details": {
+  "intro": "I work at the intersection of spatial data, Earth observation, and applied AI. My path has taken me from geoscience and Arctic oceanography to building production GeoAI systems, and along the way I learned that the hardest part of AI is rarely the model itself. It is the quality of the data, context, and infrastructure that determines whether AI becomes genuinely useful.\n\nToday, I build GeoAI tools and workflows for research, government, and industry, and I still love just about anything involving maps.",  "details": {
     "role": {
       "title": "Lead Data Scientist",
       "organization": "Esri Canada",
