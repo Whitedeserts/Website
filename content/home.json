@@ -224,14 +224,14 @@
   "contactCta": {
     "title": "Start a conversation",
     "description": "Interested in GeoAI, applied research, teaching, or spatial AI workflows? Please reach out to discuss potential collaborations, research, or consulting opportunities.",
-    "email": "mohamed.geo.ahmed@gmail.com",
+    "email": "contact@mohamedahmed.ca",
     "primaryLabel": "Connect on LinkedIn",
     "primaryUrl": "https://www.linkedin.com/in/mohamedmmahmed/",
     "secondaryLabel": "Generate message",
-    "secondaryUrl": "mailto:mohamed.geo.ahmed@gmail.com"
+    "secondaryUrl": "mailto:contact@mohamedahmed.ca"
   },
   "footerLinks": [
-    { "label": "Email", "url": "mailto:mohamed.geo.ahmed@gmail.com" },
+    { "label": "Email", "url": "mailto:contact@mohamedahmed.ca" },
     { "label": "YouTube", "url": "https://www.youtube.com/@GeospatialNerd" },
     { "label": "Research", "url": "/research" },
     { "label": "Download Resume", "url": "/Resume/Mohamed_Ahmed_Resume.pdf" }
