@@ -12,13 +12,7 @@
       "organization": "Esri Canada",
       "suffix": "Education and Research Dept.",
       "url": "https://www.esri.ca/en-ca/home",
-      "suffixUrl": "https://hed.esri.ca/",
-      "address": [
-        "Calgary Place, Tower 1",
-        "330 5th Avenue SW, Suite 910",
-        "Calgary, AB T2P 0L4"
-      ],
-      "email": "mahmed@esri.ca"
+      "suffixUrl": "https://hed.esri.ca/"
     },
     
     "also": {
@@ -26,13 +20,7 @@
       "organization": "University of Calgary",
       "suffix": "Geography Dept.",
       "url": "https://www.ucalgary.ca/",
-      "suffixUrl": "https://arts.ucalgary.ca/geography/",
-      "address": [
-        "Department of Geography",
-        "2500 University Drive N.W.",
-        "Calgary, AB T2N 1N4"
-      ],
-      "email": "mohamed.ahmed3@ucalgary.ca"
+      "suffixUrl": "https://arts.ucalgary.ca/geography/"
     }
   },
   "researchInterests": [

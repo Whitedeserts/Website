@@ -27,18 +27,10 @@ const rotatingTitles = [
         <div class="detail detail-current detail-role">
           <span class="detail-label">Current role</span>
           {home.details.role.title} - <a href={home.details.role.url} target="_blank" rel="noreferrer">{home.details.role.organization}</a>, <a href={home.details.role.suffixUrl} target="_blank" rel="noreferrer">{home.details.role.suffix}</a>
-          <address class="role-contact">
-            {home.details.role.address?.map((line) => <span>{line}</span>)}
-            <a href={`mailto:${home.details.role.email}`}>{home.details.role.email}</a>
-          </address>
         </div>
         <div class="detail detail-current detail-academic">
           <span class="detail-label">Academic role</span>
           {home.details.also.title} - <a href={home.details.also.url} target="_blank" rel="noreferrer">{home.details.also.organization}</a>, <a href={home.details.also.suffixUrl} target="_blank" rel="noreferrer">{home.details.also.suffix}</a>
-          <address class="role-contact">
-            {home.details.also.address?.map((line) => <span>{line}</span>)}
-            <a href={`mailto:${home.details.also.email}`}>{home.details.also.email}</a>
-          </address>
         </div>
         <div class="detail detail-interests">
           <span class="detail-label">Research interests</span>
