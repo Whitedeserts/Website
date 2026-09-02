@@ -7,7 +7,7 @@ interface Props {
 const { title, description = 'Personal website for Mohamed Ahmed.' } = Astro.props;
 const siteUrl = (Astro.site?.toString() ?? 'https://mohamedahmed.ca').replace(/\/$/, '');
 const canonicalUrl = new URL(Astro.url.pathname, `${siteUrl}/`).toString();
-const socialImageUrl = new URL('/photo/mohammed-inspire-headshot.png', `${siteUrl}/`).toString();
+const socialImageUrl = new URL('/photo/mohammed-inspire-headshot-social.jpg', `${siteUrl}/`).toString();
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',

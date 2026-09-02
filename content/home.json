@@ -239,7 +239,6 @@
     { "label": "Download Resume", "url": "/Resume/Mohamed_Ahmed_Resume.pdf" }
   ],
   "photo": {
-    "source": "Photo/mohammed-inspire-headshot.png",
     "publicPath": "/photo/mohammed-inspire-headshot.webp",
     "alt": "Portrait of Mohamed Ahmed"
   }

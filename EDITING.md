@@ -37,18 +37,16 @@ Then save `content/home.json` and refresh the browser page.
 
 ## Change the Photo
 
-Put the new image anywhere in the website folder, then update these values in `content/home.json`:
+Put the new image in `public/photo/`, then update these values in `content/home.json`:
 
 ```json
 "photo": {
-  "source": "Photo/your-new-photo.png",
-  "publicPath": "/photo/your-new-photo.png",
-  "alt": "Portrait of Mohamed Ahmed",
-  "caption": "Lead Data Scientist & GeoAI Lead - Esri Canada"
+  "publicPath": "/photo/your-new-photo.webp",
+  "alt": "Portrait of Mohamed Ahmed"
 }
 ```
 
-Copy the image into the matching `public/photo/` path so Astro includes it in the generated site.
+Astro includes files from `public/` in the generated site.
 
 ## Change Simple Pages
 
