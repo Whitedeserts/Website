@@ -1,13 +1,15 @@
 # Editing the Website
 
-This folder currently contains the built static website in `dist`. The original Astro source folder is missing, so direct edits in `dist` are possible but hard to maintain.
+This site is maintained from the Astro source files in `src`, `content`, and `public`. Do not edit generated files in `dist`; `dist` is rebuilt by `npm run build` and deployed by GitHub Actions.
 
 Use the editable content files instead:
 
 - Homepage content: `content/home.json`
 - Other simple pages: `content/pages/*.md`
-- Homepage updater: `scripts/apply-content.py`
-- Built pages that get updated: `dist/index.html` and matching `dist/<page>/index.html` files
+- Layout, navigation, metadata, structured data, and shared styles: `src/layouts/SiteLayout.astro`
+- Arctic gallery page: `src/pages/arctic-fieldwork.astro`
+- Arctic gallery metadata: `src/data/arcticFieldwork.ts`
+- Static production assets: `public/`
 
 ## Change the Homepage
 
@@ -16,7 +18,7 @@ Use the editable content files instead:
 3. Run this from `D:\Website`:
 
 ```powershell
-py scripts/apply-content.py
+npm run build
 ```
 
 4. Refresh the local site:
@@ -28,7 +30,7 @@ http://localhost:4321/
 For automatic updates while you edit, keep this command running in a terminal:
 
 ```powershell
-py scripts/apply-content.py --watch
+npm run dev
 ```
 
 Then save `content/home.json` and refresh the browser page.
@@ -46,7 +48,7 @@ Put the new image anywhere in the website folder, then update these values in `c
 }
 ```
 
-The script copies the source image into `dist/photo` for you.
+Copy the image into the matching `public/photo/` path so Astro includes it in the generated site.
 
 ## Change Simple Pages
 
@@ -62,19 +64,19 @@ Edit these Markdown files:
 Then run:
 
 ```powershell
-py scripts/apply-content.py --pages
-```
-
-To update both the homepage and Markdown pages at once, run:
-
-```powershell
-py scripts/apply-content.py
+npm run build
 ```
 
 The Markdown supports headings, paragraphs, bullet lists, and links like `[label](/url)`.
 
-## Advanced Direct Edits
+## Deployment Checks
 
-For pages that do not have Markdown files yet, edit their built files directly under `dist`.
+Before pushing deployment changes, run:
 
-For the clean long-term setup, restore or recreate the missing Astro `src` folder and edit the source files instead of `dist`.
+```powershell
+npm run check
+npm run lint
+npm run build
+```
+
+The custom domain is configured from `public/CNAME` and should build to `dist/CNAME` with exactly `mohamedahmed.ca`.

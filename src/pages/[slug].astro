@@ -95,20 +95,28 @@ export function getStaticPaths() {
     return html.join('\n');
   };
 
+  const descriptions: Record<string, string> = {
+    about: 'About Mohamed Ahmed, a GeoAI and applied AI leader working across geospatial AI, Earth observation, research, teaching, and production workflows.',
+    publications: 'Selected peer-reviewed publications and research outputs by Mohamed Ahmed across GeoAI, remote sensing, oceanography, Arctic marine carbon systems, and environmental data science.',
+    research: 'Research by Mohamed Ahmed on GeoAI, Earth observation, ocean and climate systems, and applied spatial AI workflows.',
+    speaking: 'Speaking, lectures, workshops, and conference presentations by Mohamed Ahmed on GeoAI, remote sensing, spatial data science, and applied AI.',
+    work: 'Applied GeoAI, AI systems, research partnerships, and selected projects by Mohamed Ahmed across imagery, foundation models, and geospatial workflows.',
+  };
+
   return Object.entries(pages).filter(([path]) => !path.endsWith('/writing.md')).map(([path, raw]) => {
     const slug = path.split('/').pop()?.replace(/\.md$/, '') ?? '';
     const title = slug.replace(/-/g, ' ').replace(/^./, (letter) => letter.toUpperCase());
 
     return {
       params: { slug },
-      props: { slug, title, html: render(raw) },
+      props: { slug, title, html: render(raw), description: descriptions[slug] },
     };
   });
 }
 
-const { slug, title, html } = Astro.props;
+const { slug, title, html, description } = Astro.props;
 ---
 
-<SiteLayout title={`${title} - Mohamed Ahmed`}>
+<SiteLayout title={`${title} - Mohamed Ahmed`} description={description}>
   <article class={`content content-${slug}`} set:html={html} />
 </SiteLayout>
