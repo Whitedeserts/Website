@@ -20,6 +20,8 @@ I am also an Adjunct Professor in Geography at the University of Calgary, where 
 
 Today, much of my work is focused on a broader question: **how AI will change the way we understand, analyze, and interact with the spatial world.**
 
+Outside of work, I’m a dad of three, an enthusiastic map nerd, and usually happiest exploring somewhere with my family.
+
 
 ## Education
 
