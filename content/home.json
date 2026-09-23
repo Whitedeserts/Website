@@ -146,19 +146,23 @@
       "tags": ["agentic-ai", "genai", "automation"]
     },
     {
-      "title": "Research translation and technical leadership",
-      "summary": "Connecting academic, government, and industry partners through workshops, applied research, technical writing, and production-ready machine learning pipelines.",
-      "role": "Lead workshops, write technical resources, mentor students, and support cross-sector applied research collaborations.",
-      "result": "Helped researchers, students, and technical teams adopt geospatial AI through practical examples and guided implementation.",
-      "meta": "50+ invited lectures and workshops",
-      "url": "/speaking",
+      "title": "SAM 3.1 object tracking for ArcGIS",
+      "summary": "Packaged Meta's SAM 3.1 model into an ArcGIS-ready deep learning workflow for object tracking, bringing foundation-model segmentation into practical GIS analysis.",
+      "role": "Built the ArcGIS toolbox and deep learning package workflow, connecting SAM 3.1 inference with ArcGIS tools so users can run object tracking inside their GIS environment.",
+      "result": "Created a reusable toolbox and demo workflow that helps ArcGIS users apply modern segmentation and object tracking models without rebuilding the integration from scratch.",
+      "meta": "ArcGIS deep learning package - SAM 3.1 object tracking",
+      "url": "https://github.com/Whitedeserts/SAM31_ObjectTracker",
       "supportingLinks": [
         {
-          "label": "Writing and technical articles",
-          "url": "/writing"
+          "label": "YouTube demo",
+          "url": "https://www.youtube.com/watch?v=KvRYlhWDWt0"
+        },
+        {
+          "label": "GitHub toolbox",
+          "url": "https://github.com/Whitedeserts/SAM31_ObjectTracker"
         }
       ],
-      "tags": ["teaching", "research", "mlops"]
+      "tags": ["sam-3-1", "object-tracking", "arcgis-deep-learning"]
     }
   ],
   "whereIHelp": [
