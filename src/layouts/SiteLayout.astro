@@ -54,6 +54,20 @@ const structuredData = {
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored === 'light' || stored === 'dark'
+            ? stored
+            : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+          document.documentElement.style.colorScheme = theme;
+        } catch (error) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
@@ -77,26 +91,129 @@ const structuredData = {
         --ink: #18231f;
         --muted: #616d66;
         --paper: #f8f3ea;
+        --background-secondary: #eef3ec;
         --surface: #fffdf7;
+        --surface-elevated: #ffffff;
         --line: #d8d0bf;
+        --divider: #e4ddcf;
         --accent: #2f6f5e;
         --accent-strong: #1f4e43;
         --link: #337844;
         --link-hover: #8a6722;
         --gold: #c48736;
         --shadow: 0 18px 45px rgba(36, 31, 22, 0.1);
+
+        --ink-rgb: 24, 35, 31;
+        --surface-rgb: 255, 253, 248;
+        --tint-rgb: 238, 244, 239;
+        --shadow-rgb: 33, 27, 19;
+        --accent-rgb: 47, 111, 94;
+        --gold-rgb: 196, 135, 54;
+        --link-rgb: 51, 120, 68;
+        --earth-mask-rgb: 251, 246, 236;
+        --placeholder-rgb: 92, 103, 99;
+        --control-on-scrim-rgb: 255, 253, 248;
+
+        --button-primary: #1f4e43;
+        --button-primary-text: #ffffff;
+        --accent-hover: var(--gold);
+        --focus-ring: var(--gold);
+        --badge-background: #ffffff;
+        --badge-text: #141414;
+        --tag-text: #4f5f2d;
+        --thumb-placeholder-background: #e7dfd2;
+        --scrim-text: #fdfaf3;
+        --scrim-control-text: #18231f;
+        --overlay: rgba(18, 24, 22, 0.88);
+        --selection-background: rgba(47, 111, 94, 0.3);
+        --code-background: var(--surface);
+        --image-caption: var(--muted);
+        --navigation-background: transparent;
+        --footer-background: transparent;
+
+        --page-gradient:
+          radial-gradient(circle at 10% 5%, rgba(196, 135, 54, 0.14), transparent 28rem),
+          linear-gradient(135deg, #fbf6ec 0%, #eef3ec 48%, #f7f2e8 100%);
+      }
+
+      :root[data-theme='dark'] {
+        color-scheme: dark;
+        --ink: #e9ece9;
+        --muted: #93a39b;
+        --paper: #121917;
+        --background-secondary: #1c2622;
+        --surface: #1b2420;
+        --surface-elevated: #222c27;
+        --line: #30403a;
+        --divider: #283630;
+        --accent: #3fa98c;
+        --accent-strong: #4fcdb0;
+        --link: #5fd38a;
+        --link-hover: #e0a94f;
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+
+        --ink-rgb: 233, 236, 233;
+        --surface-rgb: 27, 36, 32;
+        --tint-rgb: 34, 46, 40;
+        --shadow-rgb: 0, 0, 0;
+        --accent-rgb: 63, 169, 140;
+        --link-rgb: 95, 211, 138;
+        --earth-mask-rgb: 18, 23, 21;
+        --placeholder-rgb: 140, 152, 146;
+
+        --tag-text: #b9c9ab;
+        --thumb-placeholder-background: #23302a;
+        --overlay: rgba(10, 14, 12, 0.88);
+        --selection-background: rgba(63, 169, 140, 0.32);
+
+        --page-gradient:
+          radial-gradient(circle at 10% 5%, rgba(196, 135, 54, 0.1), transparent 30rem),
+          linear-gradient(135deg, #0f1613 0%, #10201c 48%, #121b17 100%);
       }
 
       * {
         box-sizing: border-box;
       }
 
+      @media (prefers-reduced-motion: no-preference) {
+        body,
+        .site-header,
+        .nav a,
+        .card,
+        .help-card,
+        .tech-card,
+        .blog-card,
+        .resource-card,
+        .content,
+        .content-image,
+        .contact-cta,
+        .contact-form,
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea,
+        .youtube-window,
+        .social-window,
+        .footer,
+        .theme-toggle,
+        a {
+          transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+        }
+      }
+
+      ::selection {
+        background: var(--selection-background);
+        color: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--focus-ring);
+        outline-offset: 2px;
+      }
+
       body {
         margin: 0;
         min-height: 100vh;
-        background:
-          radial-gradient(circle at 10% 5%, rgba(196, 135, 54, 0.14), transparent 28rem),
-          linear-gradient(135deg, #fbf6ec 0%, #eef3ec 48%, #f7f2e8 100%);
+        background: var(--page-gradient);
         color: var(--ink);
         font-family: 'Bricolage Grotesque', 'Inter Tight', 'Segoe UI', sans-serif;
         line-height: 1.6;
@@ -115,9 +232,9 @@ const structuredData = {
       .earth-background::after {
         background: linear-gradient(
           90deg,
-          rgba(251, 246, 236, 0.96) 0%,
-          rgba(251, 246, 236, 0.8) 52%,
-          rgba(251, 246, 236, 0.48) 100%
+          rgba(var(--earth-mask-rgb), 0.96) 0%,
+          rgba(var(--earth-mask-rgb), 0.8) 52%,
+          rgba(var(--earth-mask-rgb), 0.48) 100%
         );
         content: '';
         inset: 0;
@@ -132,7 +249,7 @@ const structuredData = {
 
       a {
         color: var(--link);
-        text-decoration-color: rgba(102, 120, 51, 0.42);
+        text-decoration-color: rgba(var(--link-rgb), 0.42);
         text-underline-offset: 0.18em;
       }
 
@@ -179,6 +296,54 @@ const structuredData = {
         color: var(--accent-strong);
       }
 
+      .sr-only {
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+
+      .theme-toggle {
+        align-items: center;
+        background: transparent;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        cursor: pointer;
+        display: inline-flex;
+        height: 34px;
+        justify-content: center;
+        padding: 0;
+        width: 34px;
+      }
+
+      .theme-toggle:hover {
+        border-color: var(--accent);
+        color: var(--accent-strong);
+      }
+
+      .theme-toggle__icon {
+        height: 18px;
+        width: 18px;
+      }
+
+      .theme-toggle__icon--moon {
+        display: none;
+      }
+
+      :root[data-theme='dark'] .theme-toggle__icon--sun {
+        display: none;
+      }
+
+      :root[data-theme='dark'] .theme-toggle__icon--moon {
+        display: block;
+      }
+
       main {
         padding: 28px 0 64px;
       }
@@ -202,7 +367,7 @@ const structuredData = {
 
       .eyebrow a {
         color: inherit;
-        text-decoration-color: rgba(47, 111, 94, 0.45);
+        text-decoration-color: rgba(var(--accent-rgb), 0.45);
       }
 
       h1,
@@ -306,10 +471,10 @@ const structuredData = {
       }
 
       .interest-tags span {
-        background: rgba(255, 253, 248, 0.65);
+        background: rgba(var(--surface-rgb), 0.65);
         border: 1px solid var(--line);
         border-radius: 999px;
-        color: #4f5f2d;
+        color: var(--tag-text);
         font-size: 0.92rem;
         font-weight: 650;
         line-height: 1.2;
@@ -318,9 +483,9 @@ const structuredData = {
 
       .linkedin-cta {
         align-items: center;
-        background: var(--accent-strong);
+        background: var(--button-primary);
         border-radius: 999px;
-        color: #fff;
+        color: var(--button-primary-text);
         display: inline-flex;
         font-size: 0.84rem;
         font-weight: 800;
@@ -331,16 +496,16 @@ const structuredData = {
       }
 
       .linkedin-cta:hover {
-        color: #fff;
+        color: var(--button-primary-text);
         background: var(--gold);
       }
 
       .youtube-cta {
         align-items: center;
-        background: var(--accent-strong);
+        background: var(--button-primary);
         border: 0;
         border-radius: 999px;
-        color: #fff;
+        color: var(--button-primary-text);
         display: inline-flex;
         font-size: 0.84rem;
         font-weight: 800;
@@ -352,17 +517,17 @@ const structuredData = {
 
       .youtube-cta:hover {
         background: var(--gold);
-        color: #fff;
+        color: var(--button-primary-text);
       }
 
       .youtube-window {
         align-items: stretch;
         background:
-          linear-gradient(135deg, rgba(255, 253, 248, 0.9), rgba(238, 244, 239, 0.78)),
-          radial-gradient(circle at 90% 10%, rgba(196, 135, 54, 0.18), transparent 20rem);
+          linear-gradient(135deg, rgba(var(--surface-rgb), 0.9), rgba(var(--tint-rgb), 0.78)),
+          radial-gradient(circle at 90% 10%, rgba(var(--gold-rgb), 0.18), transparent 20rem);
         border: 1px solid var(--line);
         border-radius: 8px;
-        box-shadow: 0 10px 26px rgba(33, 27, 19, 0.07);
+        box-shadow: 0 10px 26px rgba(var(--shadow-rgb), 0.07);
         display: grid;
         gap: 8px;
         overflow: hidden;
@@ -410,23 +575,11 @@ const structuredData = {
         position: relative;
       }
 
-      .portrait::before {
-        background:
-          radial-gradient(circle at 20% 18%, rgba(196, 135, 54, 0.18), transparent 13rem),
-          rgba(238, 244, 239, 0.7);
-        border: 1px solid rgba(47, 111, 94, 0.16);
-        border-radius: 22px;
-        content: '';
-        inset: 12px -12px -12px 12px;
-        position: absolute;
-        z-index: -1;
-      }
-
       .portrait img {
         aspect-ratio: 4 / 5;
-        border: 1px solid rgba(33, 27, 19, 0.12);
+        border: 1px solid rgba(var(--shadow-rgb), 0.12);
         border-radius: 16px;
-        box-shadow: 0 18px 42px rgba(33, 27, 19, 0.14);
+        box-shadow: 0 18px 42px rgba(var(--shadow-rgb), 0.14);
         display: block;
         object-fit: cover;
         width: 100%;
@@ -435,10 +588,10 @@ const structuredData = {
       .social-window {
         align-items: stretch;
         background:
-          linear-gradient(135deg, rgba(255, 253, 248, 0.9), rgba(238, 244, 239, 0.78)),
-          radial-gradient(circle at 90% 10%, rgba(196, 135, 54, 0.18), transparent 20rem);
+          linear-gradient(135deg, rgba(var(--surface-rgb), 0.9), rgba(var(--tint-rgb), 0.78)),
+          radial-gradient(circle at 90% 10%, rgba(var(--gold-rgb), 0.18), transparent 20rem);
         border: 1px solid var(--line);
-        box-shadow: 0 10px 26px rgba(33, 27, 19, 0.07);
+        box-shadow: 0 10px 26px rgba(var(--shadow-rgb), 0.07);
         display: grid;
         gap: 8px;
         margin: 0;
@@ -483,7 +636,7 @@ const structuredData = {
       }
 
       .card {
-        background: rgba(255, 253, 248, 0.72);
+        background: rgba(var(--surface-rgb), 0.72);
         border: 1px solid var(--line);
         border-radius: 8px;
         padding: 22px;
@@ -498,7 +651,7 @@ const structuredData = {
 
       .support-links a {
         align-items: center;
-        border: 1px solid rgba(47, 111, 94, 0.25);
+        border: 1px solid rgba(var(--accent-rgb), 0.25);
         border-radius: 999px;
         display: inline-flex;
         font-size: 0.86rem;
@@ -522,7 +675,7 @@ const structuredData = {
       }
 
       .tag {
-        border: 1px solid rgba(47, 111, 94, 0.25);
+        border: 1px solid rgba(var(--accent-rgb), 0.25);
         border-radius: 999px;
         color: var(--accent-strong);
         padding: 3px 10px;
@@ -535,11 +688,11 @@ const structuredData = {
       }
 
       .help-card {
-        background: rgba(255, 253, 248, 0.78);
+        background: rgba(var(--surface-rgb), 0.78);
         border: 1px solid var(--line);
         border-left: 4px solid var(--accent);
         border-radius: 8px;
-        box-shadow: 0 14px 35px rgba(33, 27, 19, 0.08);
+        box-shadow: 0 14px 35px rgba(var(--shadow-rgb), 0.08);
         display: grid;
         gap: 12px;
         padding: 22px;
@@ -557,7 +710,7 @@ const structuredData = {
       }
 
       .tech-card {
-        background: rgba(255, 253, 248, 0.66);
+        background: rgba(var(--surface-rgb), 0.66);
         border: 1px solid var(--line);
         border-radius: 8px;
         display: grid;
@@ -577,8 +730,8 @@ const structuredData = {
       }
 
       .tech-tags span {
-        background: rgba(238, 244, 239, 0.7);
-        border: 1px solid rgba(47, 111, 94, 0.18);
+        background: rgba(var(--tint-rgb), 0.7);
+        border: 1px solid rgba(var(--accent-rgb), 0.18);
         border-radius: 999px;
         color: var(--muted);
         font-size: 0.86rem;
@@ -589,7 +742,7 @@ const structuredData = {
 
       .contact-cta {
         align-items: start;
-        background: rgba(255, 253, 248, 0.78);
+        background: rgba(var(--surface-rgb), 0.78);
         border: 1px solid var(--line);
         border-left: 4px solid var(--gold);
         box-shadow: var(--shadow);
@@ -616,7 +769,7 @@ const structuredData = {
       }
 
       .contact-form {
-        background: rgba(255, 253, 248, 0.82);
+        background: rgba(var(--surface-rgb), 0.82);
         border: 1px solid var(--line);
         border-radius: 8px;
         display: grid;
@@ -643,7 +796,7 @@ const structuredData = {
       .contact-form select,
       .contact-form textarea {
         background: var(--surface);
-        border: 1px solid rgba(33, 27, 19, 0.16);
+        border: 1px solid rgba(var(--shadow-rgb), 0.16);
         border-radius: 8px;
         color: var(--ink);
         font: inherit;
@@ -653,7 +806,7 @@ const structuredData = {
 
       .contact-form input::placeholder,
       .contact-form textarea::placeholder {
-        color: rgba(92, 103, 99, 0.72);
+        color: rgba(var(--placeholder-rgb), 0.72);
       }
 
       .contact-form textarea {
@@ -679,10 +832,10 @@ const structuredData = {
 
       .contact-actions button,
       .message-actions button {
-        background: var(--accent-strong);
+        background: var(--button-primary);
         border: 0;
         border-radius: 999px;
-        color: #fff;
+        color: var(--button-primary-text);
         cursor: pointer;
         display: inline-flex;
         font: inherit;
@@ -694,9 +847,9 @@ const structuredData = {
 
       .email-app-link {
         align-items: center;
-        background: var(--accent-strong);
+        background: var(--button-primary);
         border-radius: 999px;
-        color: #fff;
+        color: var(--button-primary-text);
         display: inline-flex;
         font-weight: 800;
         justify-content: center;
@@ -708,12 +861,12 @@ const structuredData = {
       .message-actions button:hover,
       .email-app-link:hover {
         background: var(--gold);
-        color: #fff;
+        color: var(--button-primary-text);
       }
 
       .contact-secondary {
         align-items: center;
-        border: 1px solid rgba(47, 111, 94, 0.25);
+        border: 1px solid rgba(var(--accent-rgb), 0.25);
         border-radius: 999px;
         display: inline-flex;
         font-weight: 800;
@@ -728,8 +881,8 @@ const structuredData = {
       }
 
       .browser-fallback {
-        background: rgba(238, 244, 239, 0.7);
-        border: 1px solid rgba(47, 111, 94, 0.18);
+        background: rgba(var(--tint-rgb), 0.7);
+        border: 1px solid rgba(var(--accent-rgb), 0.18);
         border-radius: 8px;
         grid-column: 1 / -1;
         display: grid;
@@ -757,7 +910,7 @@ const structuredData = {
       }
 
       .content {
-        background: rgba(255, 253, 248, 0.74);
+        background: rgba(var(--surface-rgb), 0.74);
         border: 1px solid var(--line);
         box-shadow: var(--shadow);
         margin: 32px auto 0;
@@ -799,11 +952,11 @@ const structuredData = {
       }
 
       .content-section-research-areas li {
-        background: rgba(255, 253, 248, 0.76);
+        background: rgba(var(--surface-rgb), 0.76);
         border: 1px solid var(--line);
         border-left: 4px solid var(--accent);
         border-radius: 8px;
-        box-shadow: 0 10px 26px rgba(33, 27, 19, 0.06);
+        box-shadow: 0 10px 26px rgba(var(--shadow-rgb), 0.06);
         padding: 16px;
       }
 
@@ -821,11 +974,11 @@ const structuredData = {
       }
 
       .content-section-what-i-build li {
-        background: rgba(255, 253, 248, 0.76);
+        background: rgba(var(--surface-rgb), 0.76);
         border: 1px solid var(--line);
         border-left: 4px solid var(--accent);
         border-radius: 8px;
-        box-shadow: 0 10px 26px rgba(33, 27, 19, 0.06);
+        box-shadow: 0 10px 26px rgba(var(--shadow-rgb), 0.06);
         padding: 16px;
       }
 
@@ -849,10 +1002,10 @@ const structuredData = {
       }
 
       .content-image {
-        background: rgba(255, 253, 248, 0.78);
-        border: 1px solid rgba(47, 111, 94, 0.2);
+        background: rgba(var(--surface-rgb), 0.78);
+        border: 1px solid rgba(var(--accent-rgb), 0.2);
         border-radius: 8px;
-        box-shadow: 0 12px 28px rgba(33, 27, 19, 0.08);
+        box-shadow: 0 12px 28px rgba(var(--shadow-rgb), 0.08);
         display: flex;
         flex-direction: column;
         margin: 0;
@@ -861,7 +1014,7 @@ const structuredData = {
 
       .content-image img {
         aspect-ratio: 4 / 3;
-        background: rgba(238, 244, 239, 0.78);
+        background: rgba(var(--tint-rgb), 0.78);
         display: block;
         flex: 0 0 auto;
         height: auto;
@@ -963,10 +1116,10 @@ const structuredData = {
       }
 
       .blog-card {
-        background: rgba(255, 253, 248, 0.78);
+        background: rgba(var(--surface-rgb), 0.78);
         border: 1px solid var(--line);
         border-radius: 8px;
-        box-shadow: 0 14px 35px rgba(33, 27, 19, 0.08);
+        box-shadow: 0 14px 35px rgba(var(--shadow-rgb), 0.08);
         display: grid;
         grid-template-rows: auto 1fr;
         min-width: 0;
@@ -975,7 +1128,7 @@ const structuredData = {
 
       .blog-thumb {
         aspect-ratio: 16 / 10;
-        background: #e7dfd2;
+        background: var(--thumb-placeholder-background);
         display: block;
         overflow: hidden;
         position: relative;
@@ -1002,8 +1155,8 @@ const structuredData = {
       }
 
       .credit-badge {
-        background: rgba(47, 111, 94, 0.1);
-        border: 1px solid rgba(47, 111, 94, 0.22);
+        background: rgba(var(--accent-rgb), 0.1);
+        border: 1px solid rgba(var(--accent-rgb), 0.22);
         border-radius: 999px;
         color: var(--accent-strong);
         font-size: 0.78rem;
@@ -1028,7 +1181,7 @@ const structuredData = {
       }
 
       .resource-card {
-        background: rgba(255, 253, 248, 0.7);
+        background: rgba(var(--surface-rgb), 0.7);
         border: 1px solid var(--line);
         border-radius: 8px;
         display: grid;
@@ -1039,7 +1192,7 @@ const structuredData = {
 
       .resource-thumb {
         aspect-ratio: 16 / 10;
-        background: #e7dfd2;
+        background: var(--thumb-placeholder-background);
         display: block;
         overflow: hidden;
         position: relative;
@@ -1054,10 +1207,10 @@ const structuredData = {
 
       .resource-index {
         align-items: center;
-        background: #fff;
-        border: 1px solid rgba(196, 135, 54, 0.24);
+        background: var(--badge-background);
+        border: 1px solid rgba(var(--gold-rgb), 0.24);
         border-radius: 999px;
-        color: #000;
+        color: var(--badge-text);
         display: inline-flex;
         font-size: 0.8rem;
         font-weight: 900;
@@ -1164,9 +1317,9 @@ const structuredData = {
         .earth-background::after {
           background: linear-gradient(
             180deg,
-            rgba(248, 244, 237, 0.97) 0%,
-            rgba(248, 244, 237, 0.84) 58%,
-            rgba(248, 244, 237, 0.6) 100%
+            rgba(var(--earth-mask-rgb), 0.97) 0%,
+            rgba(var(--earth-mask-rgb), 0.84) 58%,
+            rgba(var(--earth-mask-rgb), 0.6) 100%
           );
         }
       }
@@ -1190,11 +1343,93 @@ const structuredData = {
         <a href="/work">Work</a>
         <a href="/speaking">Speaking</a>
         <a href="/writing">Writing</a>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-pressed="false"
+          aria-label="Switch to dark mode"
+        >
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4.5" fill="currentColor" />
+            <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <line x1="12" y1="2.5" x2="12" y2="5" />
+              <line x1="12" y1="19" x2="12" y2="21.5" />
+              <line x1="2.5" y1="12" x2="5" y2="12" />
+              <line x1="19" y1="12" x2="21.5" y2="12" />
+              <line x1="4.9" y1="4.9" x2="6.6" y2="6.6" />
+              <line x1="17.4" y1="17.4" x2="19.1" y2="19.1" />
+              <line x1="4.9" y1="19.1" x2="6.6" y2="17.4" />
+              <line x1="17.4" y1="6.6" x2="19.1" y2="4.9" />
+            </g>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M20.4 14.7c-3.9 1.4-8.2-0.9-9.6-4.8-1-2.8-0.3-5.8 1.6-7.9-4.7 0.4-8.4 4.3-8.4 9.1 0 5.1 4.1 9.2 9.2 9.2 3.9 0 7.3-2.4 8.6-6-0.5 0.2-0.9 0.3-1.4 0.4Z" />
+          </svg>
+          <span class="sr-only" data-theme-toggle-label>Switch to dark mode</span>
+        </button>
       </nav>
     </header>
     <main class="shell">
       <slot />
     </main>
+    <script is:inline>
+      (function () {
+        var STORAGE_KEY = 'theme';
+        var toggle = document.getElementById('theme-toggle');
+        var toggleLabel = document.querySelector('[data-theme-toggle-label]');
+        var meta = document.querySelector('meta[name="theme-color"]');
+        var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function getStored() {
+          try {
+            return localStorage.getItem(STORAGE_KEY);
+          } catch (error) {
+            return null;
+          }
+        }
+
+        function setStored(value) {
+          try {
+            localStorage.setItem(STORAGE_KEY, value);
+          } catch (error) {
+            // Ignore storage errors (e.g. private browsing).
+          }
+        }
+
+        function reflect(theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+          document.documentElement.style.colorScheme = theme;
+
+          if (meta) {
+            meta.setAttribute('content', theme === 'dark' ? '#121917' : '#f8f3ea');
+          }
+
+          if (toggle) {
+            var label = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+            toggle.setAttribute('aria-pressed', String(theme === 'dark'));
+            toggle.setAttribute('aria-label', label);
+            if (toggleLabel) toggleLabel.textContent = label;
+          }
+        }
+
+        reflect(document.documentElement.getAttribute('data-theme') || 'light');
+
+        if (toggle) {
+          toggle.addEventListener('click', function () {
+            var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            var next = current === 'dark' ? 'light' : 'dark';
+            setStored(next);
+            reflect(next);
+          });
+        }
+
+        mediaQuery.addEventListener('change', function (event) {
+          if (getStored()) return;
+          reflect(event.matches ? 'dark' : 'light');
+        });
+      })();
+    </script>
     <script is:inline>
       document.querySelectorAll('a[href]').forEach((link) => {
         if (!(link instanceof HTMLAnchorElement)) return;
@@ -1240,6 +1475,8 @@ const structuredData = {
         camera.position.set(0, 0, 8);
         scene.add(group);
 
+        const isDarkTheme = document.documentElement.getAttribute('data-theme') === 'dark';
+
         const earth = new THREE.Mesh(
           new THREE.SphereGeometry(2.05, 72, 72),
           new THREE.MeshStandardMaterial({
@@ -1254,7 +1491,11 @@ const structuredData = {
 
         const grid = new THREE.LineSegments(
           new THREE.WireframeGeometry(new THREE.SphereGeometry(2.075, 32, 18)),
-          new THREE.LineBasicMaterial({ color: 0x0c6b5a, opacity: 0.28, transparent: true }),
+          new THREE.LineBasicMaterial({
+            color: isDarkTheme ? 0x4fcdb0 : 0x0c6b5a,
+            opacity: isDarkTheme ? 0.4 : 0.28,
+            transparent: true,
+          }),
         );
         group.add(grid);
 
@@ -1285,8 +1526,8 @@ const structuredData = {
         group.add(points);
 
         const orbitMaterial = new THREE.LineBasicMaterial({
-          color: 0x064b40,
-          opacity: 0.3,
+          color: isDarkTheme ? 0x3fa98c : 0x064b40,
+          opacity: isDarkTheme ? 0.34 : 0.3,
           transparent: true,
         });
         for (let index = 0; index < 3; index += 1) {

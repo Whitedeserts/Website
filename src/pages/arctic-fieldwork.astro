@@ -245,7 +245,7 @@ const heroImage = arcticImages[0];
   }
 
   .arctic-research-link {
-    background: rgba(255, 253, 248, 0.78);
+    background: rgba(var(--surface-rgb), 0.78);
     border: 1px solid var(--line);
     border-left: 4px solid var(--accent);
     border-radius: 8px;
@@ -272,7 +272,7 @@ const heroImage = arcticImages[0];
 
   .lightbox {
     align-items: center;
-    background: rgba(18, 24, 22, 0.88);
+    background: var(--overlay);
     display: grid;
     inset: 0;
     justify-items: center;
@@ -303,16 +303,16 @@ const heroImage = arcticImages[0];
   }
 
   .lightbox figcaption {
-    color: var(--surface);
+    color: var(--scrim-text);
     font-size: 0.95rem;
     text-align: center;
   }
 
   .lightbox button {
-    background: rgba(255, 253, 248, 0.9);
-    border: 1px solid var(--line);
+    background: rgba(var(--control-on-scrim-rgb), 0.9);
+    border: 1px solid rgba(24, 35, 31, 0.18);
     border-radius: 999px;
-    color: var(--ink);
+    color: var(--scrim-control-text);
     cursor: pointer;
     font: inherit;
     font-weight: 800;
